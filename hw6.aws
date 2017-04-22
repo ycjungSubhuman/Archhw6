@@ -1,0 +1,12 @@
+[Version]
+Version=10.3
+[Designs]
+hw6=.\hw6\hw6.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+macro=
+[Expand]
+hw6=1
