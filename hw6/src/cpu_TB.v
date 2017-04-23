@@ -1,6 +1,7 @@
 `timescale 1ns/1ns																																																							   
 `define PERIOD1 100
 `include "memory_hlt_added.v"
+`include "cpu.v"
 `define WORD_SIZE 16
 
 `define NUM_TEST 38

@@ -7,7 +7,7 @@ module Stage3(Pc,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
 	MemRead_OUT, MemWrite_OUT,
-	RegWriteSrc_OUT, RegWrite_OUT,
+	RegWriteSrc_OUT, RegWrite_OUT, MemWriteData_OUT,
 	Rs_OUT, Rt_OUT,
 	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
 	clk, reset_n
@@ -26,6 +26,7 @@ module Stage3(Pc,
 	output reg [1:0] RegWriteTarget;
 	output reg [1:0] Rs_OUT;
 	output reg [1:0] Rt_OUT;
+	output reg [`WORD_SIZE-1:0] MemWriteData_OUT;
 		input clk;
 	input reset_n;
 	
@@ -95,7 +96,8 @@ module Stage3(Pc,
 			if(ControlB == 0) operandB = ReadData2;
 			else if(ControlB == 1) operandB = MEM_RegWriteData;
 			else if(ControlB == 2) operandB = WB_RegWriteData;
-		end																				
+		end
+		MemWriteData_OUT = operandB;
 		if(RegDest_REG == 0) RegWriteTarget = Rd_REG;
 		else if(RegDest_REG == 1) RegWriteTarget = Rt_REG;
 		if(IsLHI_REG == 0) ALUOut = ALUInterOut;

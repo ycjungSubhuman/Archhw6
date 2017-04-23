@@ -75,6 +75,7 @@ module Datapath (
 	wire MemWrite_3_4;
 	wire [1:0] RegWriteSrc_3_4;
 	wire RegWrite_3_4;
+	wire [`WORD_SIZE-1:0] MemWriteData_3_4;
 	
 	wire [1:0] WB_RegWriteSrc;
 	
@@ -112,7 +113,7 @@ module Datapath (
 	MemRead_2_3, MemWrite_2_3,
 	RegWriteSrc_2_3, RegWrite_2_3,
 	MemRead_3_4, MemWrite_3_4,
-	RegWriteSrc_3_4, RegWrite_3_4,
+	RegWriteSrc_3_4, RegWrite_3_4, MemWriteData_3_4,
 	Rs_3_F, Rt_3_F,
 	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
 	clk, reset_n
@@ -120,7 +121,7 @@ module Datapath (
 
 	
 	Stage4 st4(Pc_3_4,
-	ALUOut_3_4, RegWriteTarget_3_4, 
+	ALUOut_3_4, RegWriteTarget_3_4, MemWriteData_3_4,
 	Pc_4_5, MemData_4_5, ALUOut_4_5, RegWriteTarget_4_5,
 	MemRead_3_4, MemWrite_3_4,
 	RegWriteSrc_3_4, RegWrite_3_4,
