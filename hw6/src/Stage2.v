@@ -6,7 +6,7 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	ALUOp, ALUSrc, IsLHI, RegDest,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
-	ControlA, ControlB
+	ControlA, ControlB, WB_RegWriteTarget, WB_WriteReg, WB_RegWrite
 	);
 	//Data inout
 	output [`WORD_SIZE-1:0] PcUpdateTarget;
@@ -49,6 +49,11 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	//internal Register(IF/ID)
 	reg [`WORD_SIZE-1:0] Pc_REG;
 	reg [`WORD_SIZE-1:0] inst_REG;
+	
+	//Write Back
+	input [`WORD_SIZE-1:0] WB_RegWriteTarget;
+	input [1:0] WB_WriteReg;
+	input WB_RegWrite;
 	
 	Control ctrl(inst_REG, 
 	BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, 

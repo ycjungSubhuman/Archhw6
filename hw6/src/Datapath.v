@@ -32,7 +32,8 @@ module Datapath (
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, PcVal,
 	ALUOp, ALUSrc, IsLHI, RegDest,
 	MemRead, MemWrite,
-	RegWriteSrc, RegWrite
+	RegWriteSrc, RegWrite,
+	ControlA, ControlB
 	);
 	
 	Stage3 st3(Pc,
@@ -50,7 +51,8 @@ module Datapath (
 	PcVal, MemData, ALUOut_OUT, RegWriteTarget_OUT,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
-	RegWriteSrc_OUT, RegWrite_OUT
+	RegWriteSrc_OUT, RegWrite_OUT,
+	address, data
 	);
 	
 	Stage5 st5(Pc,

@@ -1,4 +1,4 @@
-17
+18
 ~M 0 "" 0 $root
 ~A 1 "" 0 $root
 ~M 3 "./../src/ALU.v" 4 ALU
@@ -11,8 +11,8 @@
 ~A 1 "./../src/Forward.v" 3 Forward
 ~M 3 "./../src/register_files.v" 3 RegisterFiles
 ~A 1 "./../src/register_files.v" 3 RegisterFiles
-~M 3 "./../src/Stage3.v" 3 Stage2
-~A 1 "./../src/Stage3.v" 3 Stage2
+~M 3 "./../src/Stage2.v" 4 Stage2
+~A 1 "./../src/Stage2.v" 4 Stage2
 ~M 3 "./../src/Stage3.v" 3 Stage3
 ~A 1 "./../src/Stage3.v" 3 Stage3
 ~M 3 "./../src/Stage4.v" 3 Stage4

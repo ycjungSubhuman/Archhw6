@@ -1,7 +1,6 @@
 MESSAGE "Pass 1. Scanning modules hierarchy."
 MESSAGE_SP VCP2113 "Module \$root found in current working library."
 BEGINPROGRESS Compiling...
-MESSAGE_SP VCP2876 "Implicit net declaration, symbol ALUOut_OUT has not been declared in module Stage5." "c:/My_Designs/hw6/hw6/src/Stage5.v" 24  24
 UPDATEPROGRESS 35
 MESSAGE "Pass 2. Processing instantiations."
 UPDATEPROGRESS 45
@@ -10,12 +9,13 @@ UPDATEPROGRESS 80
 MESSAGE "Running Optimizer."
 MESSAGE "ELB/DAG code generating."
 MESSAGE_SP VCP2113 "Module \$root found in current working library."
-UPDATEPROGRESS 84
-UPDATEPROGRESS 88
-UPDATEPROGRESS 92
+UPDATEPROGRESS 83
+UPDATEPROGRESS 86
+UPDATEPROGRESS 90
+UPDATEPROGRESS 93
 UPDATEPROGRESS 96
 UPDATEPROGRESS 100
-MESSAGE "Unit top modules: Stage5."
+MESSAGE "Unit top modules: Stage2."
 MESSAGE "$root top modules: RegisterFiles ALU cpu Stage2 Stage3 Stage4 Stage5 Forward."
 ENDPROGRESS Compiling...
 SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
