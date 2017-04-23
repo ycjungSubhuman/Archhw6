@@ -3,10 +3,13 @@ Current Flow=Generic
 VCS=0
 version=3
 Current Config=compile
+
 [Configurations]
 compile=hw6
+
 [Library]
 hw6=.\hw6\hw6.lib
+
 [Settings]
 AccessRead=0
 AccessReadWrite=0
@@ -21,11 +24,56 @@ LANGUAGE=VERILOG
 REFRESH_FLOW=1
 FLOWTOOLS=NONE
 FAMILY=
+fileopenfolder=C:\My_Designs\hw5\hw5\src
+
 [LocalVerilogSets]
 EnableSLP=1
 EnableDebug=0
+
 [LocalVhdlSets]
 CompileWithDebug=0
+
 [$LibMap$]
 hw6=.
 Active_lib=
+
+[SpecTracer]
+WindowVisible=0
+
+[HierarchyViewer]
+HierarchyInformation=
+ShowHide=ShowTopLevel
+Selected=
+
+[Files]
+/Control.v=-1
+/cpu.v=-1
+/cpu_TB.v=-1
+/memory_hlt_added.v=-1
+/Datapath.v=-1
+/ALU.v=-1
+/opcodes.v=-1
+/register_files.v=-1
+/Stage1.v=-1
+/Stage2.v=-1
+/Stage3.v=-1
+/Stage4.v=-1
+/Stage5.v=-1
+/Forward.v=-1
+
+[Files.Data]
+.\src\Control.v=Verilog Source Code
+.\src\cpu.v=Verilog Source Code
+.\src\cpu_TB.v=Verilog Source Code
+.\src\memory_hlt_added.v=Verilog Source Code
+.\src\Datapath.v=Verilog Source Code
+.\src\ALU.v=Verilog Source Code
+.\src\opcodes.v=Verilog Source Code
+.\src\register_files.v=Verilog Source Code
+
+.\src\Stage1.v=Verilog Source Code
+.\src\Stage2.v=Verilog Source Code
+.\src\Stage3.v=Verilog Source Code
+.\src\Stage4.v=Verilog Source Code
+.\src\Stage5.v=Verilog Source Code
+.\src\Forward.v=Verilog Source Code

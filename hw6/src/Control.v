@@ -1,6 +1,6 @@
 `include "opcodes.v" 	   
 
-module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, IsLHI, MemRead, MemWrite, RegWriteSrc, RegWrite, RegDest, reset_n);
+module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, IsLHI, MemRead, MemWrite, RegWriteSrc, RegWrite, RegDest);
 	input [`WORD_SIZE-1:0] inst;
 	output reg [1:0] BranchProperty;
 	output reg IsJump;
@@ -15,7 +15,6 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 	output reg [1:0] RegWriteSrc;
 	output reg  RegWrite;
 	output reg [2:0] RegDest;
-	input reset_n;
 					 
 	wire [3:0] opcode = inst[`WORD_SIZE-1: `WORD_SIZE-4];
 	wire [5:0] func = (opcode==`ALU_OP) ? inst[5:0] : 0;

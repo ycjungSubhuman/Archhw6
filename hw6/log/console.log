@@ -1,0 +1,393 @@
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Control.v $dsn/src/cpu.v $dsn/src/cpu_TB.v $dsn/src/memory_hlt_added.v $dsn/src/Datapath.v $dsn/src/ALU.v $dsn/src/opcodes.v $dsn/src/register_files.v
+# Pass 1. Scanning modules hierarchy.
+# Error: VCP2565 Datapath.v : (6, 5): Undefined direction of external port readM1.
+# Error: VCP2567 Datapath.v : (6, 5): Undefined direction of internal port readM1.
+# Error: VCP2565 Datapath.v : (6, 13): Undefined direction of external port address1.
+# Error: VCP2567 Datapath.v : (6, 13): Undefined direction of internal port address1.
+# Error: VCP2565 Datapath.v : (6, 23): Undefined direction of external port data1.
+# Error: VCP2567 Datapath.v : (6, 23): Undefined direction of internal port data1.
+# Error: VCP2565 Datapath.v : (7, 5): Undefined direction of external port readM2.
+# Error: VCP2567 Datapath.v : (7, 5): Undefined direction of internal port readM2.
+# Error: VCP2565 Datapath.v : (7, 13): Undefined direction of external port writeM2.
+# Error: VCP2567 Datapath.v : (7, 13): Undefined direction of internal port writeM2.
+# Error: VCP2565 Datapath.v : (7, 22): Undefined direction of external port address2.
+# Error: VCP2567 Datapath.v : (7, 22): Undefined direction of internal port address2.
+# Error: VCP2565 Datapath.v : (7, 32): Undefined direction of external port data2.
+# Error: VCP2567 Datapath.v : (7, 32): Undefined direction of internal port data2.
+# Error: VCP2565 Datapath.v : (8, 5): Undefined direction of external port reset_n.
+# Error: VCP2567 Datapath.v : (8, 5): Undefined direction of internal port reset_n.
+# Error: VCP2565 Datapath.v : (8, 14): Undefined direction of external port clk.
+# Error: VCP2567 Datapath.v : (8, 14): Undefined direction of internal port clk.
+# Error: VCP2565 Datapath.v : (8, 19): Undefined direction of external port output_port.
+# Error: VCP2567 Datapath.v : (8, 19): Undefined direction of internal port output_port.
+# Error: VCP2565 Datapath.v : (8, 32): Undefined direction of external port is_halted.
+# Error: VCP2567 Datapath.v : (8, 32): Undefined direction of internal port is_halted.
+# Error: VCP2565 Datapath.v : (8, 43): Undefined direction of external port num_inst.
+# Error: VCP2567 Datapath.v : (8, 43): Undefined direction of internal port num_inst.
+# Error: VCP7801 Control.v : (3, 15): Duplicated declaration of unit Control.
+# Info: VCP7802 Control.v : (3, 15): Control was already declared. See previous declaration.
+# Error: VCP2562 Control.v : (4, 5): Redeclaration of port inst.
+# Error: VCP2562 Control.v : (5, 5): Redeclaration of port BranchProperty.
+# Error: VCP2505 Control.v : (5, 5): Duplicate identifier: BranchProperty
+# Error: VCP2562 Control.v : (6, 5): Redeclaration of port IsJump.
+# Error: VCP2505 Control.v : (6, 5): Duplicate identifier: IsJump
+# Error: VCP2562 Control.v : (7, 5): Redeclaration of port IsBranch.
+# Error: VCP2505 Control.v : (7, 5): Duplicate identifier: IsBranch
+# Error: VCP2562 Control.v : (8, 5): Redeclaration of port OutputPortWrite.
+# Error: VCP2505 Control.v : (8, 5): Duplicate identifier: OutputPortWrite
+# Error: VCP2562 Control.v : (9, 5): Redeclaration of port IsJumpReg.
+# Error: VCP2505 Control.v : (9, 5): Duplicate identifier: IsJumpReg
+# Error: VCP2562 Control.v : (10, 5): Redeclaration of port ALUOp.
+# Error: VCP2505 Control.v : (10, 5): Duplicate identifier: ALUOp
+# Error: VCP2562 Control.v : (11, 5): Redeclaration of port ALUSrc.
+# Error: VCP2505 Control.v : (11, 5): Duplicate identifier: ALUSrc
+# Error: VCP2562 Control.v : (12, 5): Redeclaration of port IsLHI.
+# Error: VCP2505 Control.v : (12, 5): Duplicate identifier: IsLHI
+# Error: VCP2562 Control.v : (13, 5): Redeclaration of port MemRead.
+# Error: VCP2505 Control.v : (13, 5): Duplicate identifier: MemRead
+# Error: VCP2562 Control.v : (14, 5): Redeclaration of port MemWrite.
+# Error: VCP2505 Control.v : (14, 5): Duplicate identifier: MemWrite
+# Error: VCP2562 Control.v : (15, 5): Redeclaration of port RegWriteSrc.
+# Error: VCP2505 Control.v : (15, 5): Duplicate identifier: RegWriteSrc
+# Error: VCP2562 Control.v : (16, 5): Redeclaration of port RegWrite.
+# Error: VCP2505 Control.v : (16, 5): Duplicate identifier: RegWrite
+# Error: VCP2562 Control.v : (17, 5): Redeclaration of port RegDest.
+# Error: VCP2505 Control.v : (17, 5): Duplicate identifier: RegDest
+# Error: VCP2562 Control.v : (18, 5): Redeclaration of port reset_n.
+# Error: VCP2505 Control.v : (20, 46): Duplicate identifier: opcode
+# Error: VCP2505 Control.v : (21, 57): Duplicate identifier: func
+# Error: VCP7801 register_files.v : (3, 21): Duplicated declaration of unit RegisterFiles.
+# Info: VCP7802 register_files.v : (3, 21): RegisterFiles was already declared. See previous declaration.
+# Error: VCP2562 register_files.v : (4, 5): Redeclaration of port ctrlRegWrite.
+# Error: VCP2562 register_files.v : (5, 5): Redeclaration of port readReg1.
+# Error: VCP2562 register_files.v : (6, 5): Redeclaration of port readReg2.
+# Error: VCP2562 register_files.v : (7, 5): Redeclaration of port writeReg.
+# Error: VCP2562 register_files.v : (8, 5): Redeclaration of port writeData.
+# Error: VCP2562 register_files.v : (9, 5): Redeclaration of port clk.
+# Error: VCP2562 register_files.v : (10, 5): Redeclaration of port reset_n.
+# Error: VCP2562 register_files.v : (11, 5): Redeclaration of port readData1.
+# Error: VCP2562 register_files.v : (12, 5): Redeclaration of port readData2.
+# Error: VCP2505 register_files.v : (14, 39): Duplicate identifier: registers
+# Error: VCP2505 register_files.v : (15, 38): Duplicate identifier: readData1_nxt
+# Error: VCP2505 register_files.v : (15, 38): Duplicate identifier: readData2_nxt
+# Error: VCP7801 ALU.v : (4, 11): Duplicated declaration of unit ALU.
+# Info: VCP7802 ALU.v : (4, 11): ALU was already declared. See previous declaration.
+# Error: VCP2545 ALU.v : (5, 16): Duplicate port identifier: overflow
+# Error: VCP2562 ALU.v : (5, 16): Redeclaration of port overflow.
+# Error: VCP2505 ALU.v : (5, 16): Duplicate identifier: overflow
+# Error: VCP2545 ALU.v : (6, 27): Duplicate port identifier: Y
+# Error: VCP2562 ALU.v : (6, 27): Redeclaration of port Y.
+# Error: VCP2505 ALU.v : (6, 27): Duplicate identifier: Y
+# Error: VCP2545 ALU.v : (7, 22): Duplicate port identifier: input1
+# Error: VCP2562 ALU.v : (7, 22): Redeclaration of port input1.
+# Error: VCP2545 ALU.v : (8, 22): Duplicate port identifier: input2
+# Error: VCP2562 ALU.v : (8, 22): Redeclaration of port input2.
+# Error: VCP2545 ALU.v : (9, 17): Duplicate port identifier: op
+# Error: VCP2562 ALU.v : (9, 17): Redeclaration of port op.
+# Error: VCP2505 Datapath.v : (5, 16): Duplicate identifier: Datapath
+# Error: VCP2565 Datapath.v : (6, 5): Undefined direction of external port \{readM1}_1.
+# Error: VCP2567 Datapath.v : (6, 5): Undefined direction of internal port readM1.
+# Error: VCP2565 Datapath.v : (6, 13): Undefined direction of external port \{address1}_2.
+# Error: VCP2567 Datapath.v : (6, 13): Undefined direction of internal port address1.
+# Error: VCP2565 Datapath.v : (6, 23): Undefined direction of external port \{data1}_3.
+# Error: VCP2567 Datapath.v : (6, 23): Undefined direction of internal port data1.
+# Error: VCP2565 Datapath.v : (7, 5): Undefined direction of external port \{readM2}_4.
+# Error: VCP2567 Datapath.v : (7, 5): Undefined direction of internal port readM2.
+# Error: VCP2565 Datapath.v : (7, 13): Undefined direction of external port \{writeM2}_5.
+# Error: VCP2567 Datapath.v : (7, 13): Undefined direction of internal port writeM2.
+# Error: VCP2565 Datapath.v : (7, 22): Undefined direction of external port \{address2}_6.
+# Error: VCP2567 Datapath.v : (7, 22): Undefined direction of internal port address2.
+# Error: VCP2565 Datapath.v : (7, 32): Undefined direction of external port \{data2}_7.
+# Error: VCP2567 Datapath.v : (7, 32): Undefined direction of internal port data2.
+# Error: VCP2565 Datapath.v : (8, 5): Undefined direction of external port \{reset_n}_8.
+# Error: VCP2567 Datapath.v : (8, 5): Undefined direction of internal port reset_n.
+# Error: VCP2565 Datapath.v : (8, 14): Undefined direction of external port \{clk}_9.
+# Error: VCP2567 Datapath.v : (8, 14): Undefined direction of internal port clk.
+# Error: VCP2565 Datapath.v : (8, 19): Undefined direction of external port \{output_port}_10.
+# Error: VCP2567 Datapath.v : (8, 19): Undefined direction of internal port output_port.
+# Error: VCP2565 Datapath.v : (8, 32): Undefined direction of external port \{is_halted}_11.
+# Error: VCP2567 Datapath.v : (8, 32): Undefined direction of internal port is_halted.
+# Error: VCP2565 Datapath.v : (8, 43): Undefined direction of external port \{num_inst}_12.
+# Error: VCP2567 Datapath.v : (8, 43): Undefined direction of internal port num_inst.
+# Error: VCP7801 ALU.v : (4, 11): Duplicated declaration of unit ALU.
+# Info: VCP7802 ALU.v : (4, 11): ALU was already declared. See previous declaration.
+# Error: VCP2545 ALU.v : (5, 16): Duplicate port identifier: overflow
+# Error: VCP2562 ALU.v : (5, 16): Redeclaration of port overflow.
+# Error: VCP2505 ALU.v : (5, 16): Duplicate identifier: overflow
+# Error: VCP2545 ALU.v : (6, 27): Duplicate port identifier: Y
+# Error: VCP2562 ALU.v : (6, 27): Redeclaration of port Y.
+# Error: VCP2505 ALU.v : (6, 27): Duplicate identifier: Y
+# Error: VCP2545 ALU.v : (7, 22): Duplicate port identifier: input1
+# Error: VCP2562 ALU.v : (7, 22): Redeclaration of port input1.
+# Error: VCP2545 ALU.v : (8, 22): Duplicate port identifier: input2
+# Error: VCP2562 ALU.v : (8, 22): Redeclaration of port input2.
+# Error: VCP2545 ALU.v : (9, 17): Duplicate port identifier: op
+# Error: VCP2562 ALU.v : (9, 17): Redeclaration of port op.
+# Error: VCP7801 register_files.v : (3, 21): Duplicated declaration of unit RegisterFiles.
+# Info: VCP7802 register_files.v : (3, 21): RegisterFiles was already declared. See previous declaration.
+# Error: VCP2562 register_files.v : (4, 5): Redeclaration of port ctrlRegWrite.
+# Error: VCP2562 register_files.v : (5, 5): Redeclaration of port readReg1.
+# Error: VCP2562 register_files.v : (6, 5): Redeclaration of port readReg2.
+# Error: VCP2562 register_files.v : (7, 5): Redeclaration of port writeReg.
+# Error: VCP2562 register_files.v : (8, 5): Redeclaration of port writeData.
+# Error: VCP2562 register_files.v : (9, 5): Redeclaration of port clk.
+# Error: VCP2562 register_files.v : (10, 5): Redeclaration of port reset_n.
+# Error: VCP2562 register_files.v : (11, 5): Redeclaration of port readData1.
+# Error: VCP2562 register_files.v : (12, 5): Redeclaration of port readData2.
+# Error: VCP2505 register_files.v : (14, 39): Duplicate identifier: registers
+# Error: VCP2505 register_files.v : (15, 38): Duplicate identifier: readData1_nxt
+# Error: VCP2505 register_files.v : (15, 38): Duplicate identifier: readData2_nxt
+# Compile failure 132 Errors 0 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Datapath.v
+# Pass 1. Scanning modules hierarchy.
+# Error: VCP2565 Datapath.v : (6, 5): Undefined direction of external port readM1.
+# Error: VCP2567 Datapath.v : (6, 5): Undefined direction of internal port readM1.
+# Error: VCP2565 Datapath.v : (6, 13): Undefined direction of external port address1.
+# Error: VCP2567 Datapath.v : (6, 13): Undefined direction of internal port address1.
+# Error: VCP2565 Datapath.v : (6, 23): Undefined direction of external port data1.
+# Error: VCP2567 Datapath.v : (6, 23): Undefined direction of internal port data1.
+# Error: VCP2565 Datapath.v : (7, 5): Undefined direction of external port readM2.
+# Error: VCP2567 Datapath.v : (7, 5): Undefined direction of internal port readM2.
+# Error: VCP2565 Datapath.v : (7, 13): Undefined direction of external port writeM2.
+# Error: VCP2567 Datapath.v : (7, 13): Undefined direction of internal port writeM2.
+# Error: VCP2565 Datapath.v : (7, 22): Undefined direction of external port address2.
+# Error: VCP2567 Datapath.v : (7, 22): Undefined direction of internal port address2.
+# Error: VCP2565 Datapath.v : (7, 32): Undefined direction of external port data2.
+# Error: VCP2567 Datapath.v : (7, 32): Undefined direction of internal port data2.
+# Error: VCP2565 Datapath.v : (8, 5): Undefined direction of external port reset_n.
+# Error: VCP2567 Datapath.v : (8, 5): Undefined direction of internal port reset_n.
+# Error: VCP2565 Datapath.v : (8, 14): Undefined direction of external port clk.
+# Error: VCP2567 Datapath.v : (8, 14): Undefined direction of internal port clk.
+# Error: VCP2565 Datapath.v : (8, 19): Undefined direction of external port output_port.
+# Error: VCP2567 Datapath.v : (8, 19): Undefined direction of internal port output_port.
+# Error: VCP2565 Datapath.v : (8, 32): Undefined direction of external port is_halted.
+# Error: VCP2567 Datapath.v : (8, 32): Undefined direction of internal port is_halted.
+# Error: VCP2565 Datapath.v : (8, 43): Undefined direction of external port num_inst.
+# Error: VCP2567 Datapath.v : (8, 43): Undefined direction of internal port num_inst.
+# Compile failure 24 Errors 0 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Datapath.v
+# Pass 1. Scanning modules hierarchy.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Unit top modules: RegisterFiles ALU Datapath.
+# $root top modules: RegisterFiles ALU Datapath.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/cpu.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: RegisterFiles ALU Control cpu.
+# $root top modules: RegisterFiles ALU Control cpu.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/cpu.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: RegisterFiles ALU cpu.
+# $root top modules: RegisterFiles ALU Control cpu.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage2.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU Control cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage2.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU Control cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Control.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Control.
+# $root top modules: RegisterFiles ALU Control cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage2.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage2.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage3.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage3.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage2.
+# $root top modules: RegisterFiles ALU cpu Stage2.
+# Compile success 0 Errors 0 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage3.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage3.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage3.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage3.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage4.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage4.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3 Stage4.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage5.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Error: VCP2570 Stage5.v : (21, 5): Undefined port: RegWriteSrc_OUT.
+# Error: VCP2570 Stage5.v : (22, 5): Undefined port: RegWrite_OUT.
+# Info: VCP2876 Stage5.v : (23, 29): Implicit net declaration, symbol RegWriteSrc_OUT has not been declared in module Stage5.
+# Info: VCP2876 Stage5.v : (24, 26): Implicit net declaration, symbol RegWrite_OUT has not been declared in module Stage5.
+# Info: VCP2876 Stage5.v : (25, 24): Implicit net declaration, symbol ALUOut_OUT has not been declared in module Stage5.
+# Compile failure 2 Errors 0 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage5.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Info: VCP2876 Stage5.v : (26, 24): Implicit net declaration, symbol ALUOut_OUT has not been declared in module Stage5.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage5.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3 Stage4 Stage5.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage5.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Info: VCP2876 Stage5.v : (26, 24): Implicit net declaration, symbol ALUOut_OUT has not been declared in module Stage5.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Stage5.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3 Stage4 Stage5.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Forward.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Error: VCP1000 Forward.v : (1, 1): Cannot open file: opcode.v
+# Compile failure 1 Errors 0 Warnings  Analysis time: 0[s].
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Forward.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Pass 2. Processing instantiations.
+# Pass 3. Processing behavioral statements.
+# Running Optimizer.
+# ELB/DAG code generating.
+# Info: VCP2113 Module \$root found in current working library.
+# Unit top modules: Forward.
+# $root top modules: RegisterFiles ALU cpu Stage2 Stage3 Stage4 Stage5 Forward.
+# Compile success 0 Errors 0 Warnings  Analysis time: 1[s].
+# Warning: ALOG: The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available.
+# done
+alog -O2 -sve -msg 5 -sv2k12 -work hw6 $dsn/src/Stage5.v
+# Pass 1. Scanning modules hierarchy.
+# Info: VCP2113 Module \$root found in current working library.
+# Info: VCP2876 Stage5.v : (24, 24): Implicit net declaration, symbol ALUOut_OUT has not been declared in modu
