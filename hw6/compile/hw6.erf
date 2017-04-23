@@ -2,27 +2,20 @@ MESSAGE "Pass 1. Scanning modules hierarchy."
 MESSAGE_SP VCP2113 "Module \$root found in current working library."
 BEGINPROGRESS Compiling...
 UPDATEPROGRESS 35
-MESSAGE_SP VCP2113 "Module cpu found in current working library."
-WARNING VCP2515 "Undefined module: Memory was used. Port connection rules will not be checked at such instantiations." "c:/My_Designs/hw6/hw6/src/cpu_TB.v" 31  108
 MESSAGE "Pass 2. Processing instantiations."
 UPDATEPROGRESS 45
 MESSAGE "Pass 3. Processing behavioral statements."
-UPDATEPROGRESS 62
 UPDATEPROGRESS 80
 MESSAGE "Running Optimizer."
 MESSAGE "ELB/DAG code generating."
 MESSAGE_SP VCP2113 "Module \$root found in current working library."
-UPDATEPROGRESS 82
-UPDATEPROGRESS 85
-UPDATEPROGRESS 87
-UPDATEPROGRESS 90
+UPDATEPROGRESS 84
+UPDATEPROGRESS 88
 UPDATEPROGRESS 92
-UPDATEPROGRESS 95
-UPDATEPROGRESS 97
-MESSAGE "Unit top modules: cpu_TB."
-MESSAGE "$root top modules: ALU cpu_TB."
+UPDATEPROGRESS 96
+MESSAGE "$root top modules: cpu_TB."
 UPDATEPROGRESS 100
 ENDPROGRESS Compiling...
-SUCCESS "Compile success 0 Errors 1 Warnings  Analysis time: 0[s]."
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time: 0[s]."
 WARNING ALOG: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
 MESSAGE "done"

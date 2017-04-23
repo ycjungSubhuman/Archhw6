@@ -7,7 +7,7 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 	output reg IsBranch;
 	output reg OutputPortWrite;
 	output reg IsJumpReg;
-	output reg [1:0] ALUOp;
+	output reg [2:0] ALUOp;
 	output reg ALUSrc;
 	output reg IsLHI;
 	output reg MemRead;
@@ -33,8 +33,8 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 		else OutputPortWrite = 0;
 		if(opcode == 15 && (func == 25 || func == 26)) IsJumpReg = 1;
 		else IsJumpReg = 0;
-		if(opcode == 15) ALUOp = 0;
-		else if(opcode == 4 || opcode == 7 || opcode == 8) ALUOp = 1;
+		if(opcode == 15) ALUOp = func;
+		else if(opcode == 4 || opcode == 7 || opcode == 8) ALUOp = 3;
 		else if(opcode == 5)  ALUOp = 2;
 		if(opcode == 15) ALUSrc = 0;
 		else ALUSrc = 1;

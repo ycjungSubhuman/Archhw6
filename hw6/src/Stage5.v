@@ -12,8 +12,8 @@ module Stage5(Pc,
 	input [`WORD_SIZE-1:0] ALUOut;
 	input [1:0] RegWriteTarget;
 	input [`WORD_SIZE-1:0] MemData;
-	output [`WORD_SIZE-1:0] WriteData;
-	output [`WORD_SIZE-1:0] RegWriteTarget_OUT;	
+	output reg [`WORD_SIZE-1:0] WriteData;
+	output reg [`WORD_SIZE-1:0] RegWriteTarget_OUT;	
 		input clk;
 	input reset_n;
 	
@@ -35,5 +35,19 @@ module Stage5(Pc,
 	reg [1:0] RegWriteSrc_REG;
 	reg RegWrite_REG;
 	
+	always @(*) begin
+		if(RegWriteSrc_REG == 0) WriteData = ALUOut;
+		else if(RegWriteSrc_REG == 1) WriteData = MemData_REG;
+		else if(RegWriteSrc_REG == 2) WriteData = Pc_REG;
+	end
+	
+	always @(posedge clk) begin
+		Pc_REG = Pc;
+		ALUOut_REG = ALUOut;
+		RegWriteTarget_REG = RegWriteTarget;
+		MemData_REG = MemData;
+		RegWriteSrc_REG = RegWriteSrc;
+		RegWrite_REG = RegWrite;
+	end
 	
 endmodule

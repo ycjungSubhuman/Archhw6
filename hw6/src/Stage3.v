@@ -20,17 +20,17 @@ module Stage3(Pc,
 	input [1:0] Rs;
 	input [1:0] Rt;
 	input [1:0] Rd;
-	output [`WORD_SIZE-1:0] PcVal;
+	output reg [`WORD_SIZE-1:0] PcVal;
 	assign PcVal = Pc_REG;
-	output [`WORD_SIZE-1:0] ALUOut;
-	output [1:0] RegWriteTarget;
-	output [1:0] Rs_OUT;
-	output [1:0] Rt_OUT;
+	output reg [`WORD_SIZE-1:0] ALUOut;
+	output reg [1:0] RegWriteTarget;
+	output reg [1:0] Rs_OUT;
+	output reg [1:0] Rt_OUT;
 		input clk;
 	input reset_n;
 	
 	//EX Control Signals
-	input [1:0] ALUOp;
+	input [2:0] ALUOp;
 	input ALUSrc;
 	input IsLHI;
 	input [1:0] RegDest;
@@ -50,9 +50,9 @@ module Stage3(Pc,
 	input [`WORD_SIZE-1:0] MEM_RegWriteData;
 	
 	//Control transfer
-	output MemRead_OUT;
-	output MemWrite_OUT;
-	output [1:0] RegWriteSrc_OUT;
+	output reg MemRead_OUT;
+	output reg MemWrite_OUT;
+	output reg [1:0] RegWriteSrc_OUT;
 	output RegWrite_OUT;
 	assign MemRead_OUT = MemRead_REG;
 	assign MemWrite_OUT = MemWrite_REG;
@@ -68,7 +68,7 @@ module Stage3(Pc,
 	reg [1:0] Rt_REG;
 	reg [1:0] Rd_REG;
 	//EX Control Signals
-	reg [1:0] ALUOp_REG;
+	reg [2:0] ALUOp_REG;
 	reg ALUSrc_REG;
 	reg IsLHI_REG;
 	reg [1:0] RegDest_REG;	
@@ -79,5 +79,47 @@ module Stage3(Pc,
 	reg [1:0] RegWriteSrc_REG;
 	reg RegWrite_REG;
 	
+	reg overflow;  
+	reg [`WORD_SIZE-1:0] operandA;
+	reg [`WORD_SIZE-1:0] operandB;
+	reg [`WORD_SIZE-1:0] ALUInterOut;
+	
+	always @(*) begin
+		Rs_OUT = Rs_REG;
+		Rt_OUT = Rt_REG;
+		if(ControlA == 0) operandA = ReadData1;
+		else if(ControlA == 1) operandA = MEM_RegWriteData;
+		else if(ControlA == 2) operandA = WB_RegWriteData;
+		if(ALUSrc_REG == 1)	operandB = ImmediateExtended_REG;
+		else begin
+			if(ControlB == 0) operandB = ReadData2;
+			else if(ControlB == 1) operandB = MEM_RegWriteData;
+			else if(ControlB == 2) operandB = WB_RegWriteData;
+		end																				
+		if(RegDest_REG == 0) RegWriteTarget = Rd_REG;
+		else if(RegDest_REG == 1) RegWriteTarget = Rt_REG;
+		if(IsLHI_REG == 0) ALUOut = ALUInterOut;
+		else if(IsLHI_REG == 1) ALUOut = operandA << 8;
+	end
+	
+	always @(posedge clk) begin
+		Pc_REG = Pc;
+		ReadData1_REG = ReadData1;
+		ReadData2_REG = ReadData2;
+		ImmediateExtended_REG = ImmediateExtended;
+		Rs_REG = Rs;
+		Rt_REG = Rt;
+		Rd_REG = Rd;
+		ALUOp_REG = ALUOp;
+		ALUSrc_REG = ALUSrc;
+		IsLHI_REG = IsLHI;
+		RegDest_REG = RegDest;
+		MemRead_REG = MemRead;
+		MemWrite_REG = MemWrite;
+		RegWriteSrc_REG = RegWriteSrc;
+		RegWrite_REG = RegWrite;
+	end
+	
+	ALU alu(overflow, ALUInterOut, operandA, operandB, ALUOp);
 	
 endmodule
