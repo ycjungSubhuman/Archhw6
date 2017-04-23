@@ -13,11 +13,14 @@ module cpu(Clk, Reset_N, i_readM, i_writeM, i_address, i_data, d_readM, d_writeM
 	wire i_readM;
 	output i_writeM;
 	wire i_writeM;
+	assign i_writeM = 0;
 	output [`WORD_SIZE-1:0] i_address;
 	wire [`WORD_SIZE-1:0] i_address;
 
 	inout [`WORD_SIZE-1:0] i_data;
 	wire [`WORD_SIZE-1:0] i_data;
+	
+	//assign i_data = 16'bz;
 	
 	// Data memory interface
 	output d_readM;
@@ -31,16 +34,22 @@ module cpu(Clk, Reset_N, i_readM, i_writeM, i_address, i_data, d_readM, d_writeM
 	wire [`WORD_SIZE-1:0] d_data;
 
 	output [`WORD_SIZE-1:0] num_inst;
-	wire [`WORD_SIZE-1:0] num_inst;
+	reg [`WORD_SIZE-1:0] num_inst;
 	output [`WORD_SIZE-1:0] output_port;
 	wire [`WORD_SIZE-1:0] output_port;
 	output is_halted;
 	wire is_halted;
 	
+	initial num_inst = -3; 
+	
 
     Datapath dpath (
 		.readM1(i_readM), .address1(i_address), .data1(i_data),
 		.readM2(d_readM), .writeM2(d_writeM), .address2(d_address), .data2(d_data), 
-		.reset_n(Reset_N), .clk(Clk), .output_port(output_port), .is_halted(is_halted), .num_inst(num_inst));
+		.reset_n(Reset_N), .clk(Clk), .output_port(output_port), .is_halted(is_halted));
+		
+	always@(posedge Clk) begin
+		num_inst += 1;
+	end
 
 endmodule

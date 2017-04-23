@@ -6,33 +6,35 @@ module Stage1(PcUpdateTarget, Pc, inst, readM, address, data, clk, reset_n);
 	output reg [`WORD_SIZE-1:0] inst;
 	output reg readM;
 	output reg [`WORD_SIZE-1:0] address;
-	input [`WORD_SIZE-1:0] data;
+	inout [`WORD_SIZE-1:0] data;
+	assign data = 16'bz;
 	input clk;
 	input reset_n;
 	
 	reg [`WORD_SIZE-1:0] internalPc;
 	
 	initial begin
-		internalPc = 0;
+		internalPc = -1;
 		readM = 0;
 	end
 	
-	assign Pc = internalPc + 4;
+	assign Pc = internalPc + 1;
 	
-	always @(*) begin
+	always @(data) begin
 		if(readM==1) begin
 			inst = data;
-			readM = 0;
+			$display("inst: %x, address: %x", inst, address);
 		end
 	end
 	
 	always @(posedge clk) begin
 		internalPc = PcUpdateTarget;
+
 		readM = 1;
 		address = internalPc;
 		
 		if(!reset_n) begin
-			internalPc = 0;
+			internalPc = -1;
 			readM = 0;
 		end
 	end

@@ -1,14 +1,4 @@
-"../src/memory_hlt_added.v"	1
-"../src/cpu.v"	1
 "../src/Stage2.v"	1
-"../src/Datapath.v"	1
-"../src/Stage5.v"	1
-"../src/Stage1.v"	1
-"../src/register_files.v"	1
-"../src/Control.v"	1
-"../src/cpu_TB.v"	1
-"../src/Stage3.v"	1
 "../src/opcodes.v"	1
-"../src/Stage4.v"	1
-"../src/ALU.v"	1
-"../src/Forward.v"	1
+"../src/Control.v"	1
+"../src/register_files.v"	1

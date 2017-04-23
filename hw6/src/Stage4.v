@@ -19,7 +19,7 @@ module Stage4(Pc,
 	output reg [`WORD_SIZE-1:0] MemData;
 	output [`WORD_SIZE-1:0] ALUOut_OUT;
 
-	output [`WORD_SIZE-1:0] RegWriteTarget_OUT;	
+	output [1:0] RegWriteTarget_OUT;	
 	output [1:0] RegWriteSrc_OUT;
 	output RegWrite_OUT;
 	output [`WORD_SIZE-1:0] MEM_RegWriteData;
@@ -71,11 +71,10 @@ module Stage4(Pc,
 	end
 	
 	always@(*) begin
-		if(readM) begin
-			MemData = data;
-			readM = 0;
-		end
 		if(writeM) writeM = 0;
+		else if(readM) begin
+			MemData = data;
+		end
 	end
 	
 	always@(posedge clk) begin

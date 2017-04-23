@@ -10,22 +10,22 @@
 module Datapath ( 
 	readM1, address1, data1,
 	readM2, writeM2, address2, data2, 
-	reset_n, clk, output_port, is_halted, num_inst); 
+	reset_n, clk, output_port, is_halted); 
 	
-	output readM1;
-	output address1;
-	input [`WORD_SIZE-1:0] data1;
+	output wire readM1;
+	output [`WORD_SIZE-1:0] address1;
+	inout [`WORD_SIZE-1:0] data1;
+	assign data1 = 16'bz;
 	
 	output readM2;
 	output writeM2;
-	output address2;
+	output [`WORD_SIZE-1:0] address2;
 	inout [`WORD_SIZE-1:0] data2;
 
 	input reset_n;	  
 	input clk;
 	output reg [15:0] output_port;
 	output reg is_halted;
-	output reg [`WORD_SIZE-1:0] num_inst;
 	
 	
 	//Stage1 ~ Stage2
@@ -42,8 +42,8 @@ module Datapath (
 	wire [1:0] Rt;
 	wire [1:0] Rd;
 	wire [`WORD_SIZE-1:0] Pc_2_3;
-	wire [1:0] ALUOp_2_3;
-	wire [1:0] ALUSrc_2_3;
+	wire [2:0] ALUOp_2_3;
+	wire ALUSrc_2_3;
 	wire IsLHI_2_3;
 	wire [1:0] RegDest_2_3;
 	wire MemRead_2_3;
@@ -65,7 +65,7 @@ module Datapath (
 	wire [1:0] Rt_3_F;
 	
 	//Stage4 ~ Stage3
-	wire MEM_RegWriteData;
+	wire [`WORD_SIZE-1:0] MEM_RegWriteData;
 	
 	//Stage3 ~ Stage4
 	wire [`WORD_SIZE-1:0] Pc_3_4;
@@ -103,7 +103,7 @@ module Datapath (
 	output_port, is_halted, clk, reset_n
 	);
 	
-	Forward fwd(ControlA, ControlB, Rs_3_F, Rt_3_F, RegWriteTarget_4_5, WB_RegWrite,
+	Forward fwd(ControlA, ControlB, Rs_3_F, Rt_3_F, RegWriteTarget_4_5, WB_RegWriteTarget,
 	RegWrite_4_5, WB_RegWrite);
 	
 	Stage3 st3(Pc_2_3,

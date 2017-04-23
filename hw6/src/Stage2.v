@@ -28,7 +28,7 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	input reset_n;
 	
 	//EX Control Signals
-	output [1:0] ALUOp;
+	output [2:0] ALUOp;
 	output ALUSrc;
 	output IsLHI;
 	output [1:0] RegDest;
@@ -72,7 +72,10 @@ module Stage2(PcUpdateTarget, Pc, inst,
 		end
 		else if(IsJump) PcUpdateTarget = {Pc_REG[15:12], inst_REG[11:0]};
 		else PcUpdateTarget = Pc;
-		if(OutputPortWrite) OutputData = ReadData1;
+		if(OutputPortWrite) begin
+			OutputData = ReadData1;
+			$display("outputting: ReadData1: %x, ReadData2: %x", ReadData1, ReadData2);
+		end
 		if(IsHLT) IsHalted = 1;
 		else IsHalted = 0;
 	end
@@ -80,6 +83,7 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	always @(posedge clk) begin
 		Pc_REG = Pc;
 		inst_REG = inst;
+
 	end
 	
 	RegisterFiles regfile(WB_RegWrite, inst_REG[11:10], inst_REG[9:8], WB_WriteReg, WB_RegWriteTarget, clk, reset_n, ReadData1, ReadData2);
