@@ -1,4 +1,4 @@
-27
+32
 ~M 0 "" 0 $root
 ~A 1 "" 0 $root
 ~M 3 "./../src/ALU.v" 4 ALU
@@ -9,6 +9,8 @@
 ~A 1 "./../src/Datapath.v" 10 Datapath
 ~M 1 "./../src/Forward.v" 3 Forward
 ~A 1 "./../src/Forward.v" 3 Forward
+~M 1 "./../src/memory_hlt_added.v" 7 Memory
+~A 1 "./../src/memory_hlt_added.v" 7 Memory
 ~M 1 "./../src/register_files.v" 3 RegisterFiles
 ~A 1 "./../src/register_files.v" 3 RegisterFiles
 ~M 1 "./../src/Stage1.v" 3 Stage1
@@ -23,5 +25,5 @@
 ~A 1 "./../src/Stage5.v" 3 Stage5
 ~M 3 "./../src/cpu.v" 5 cpu
 ~A 1 "./../src/cpu.v" 5 cpu
-~M 3 "./../src/cpu_TB.v" 8 cpu_TB
-~A 1 "./../src/cpu_TB.v" 8 cpu_TB
+~M 3 "./../src/cpu_TB.v" 9 cpu_TB
+~A 1 "./../src/cpu_TB.v" 9 cpu_TB

@@ -1,1 +1,2 @@
-"../src/cpu_TB.v"	2
+"../src/Stage4.v"	1
+"../src/opcodes.v"	1

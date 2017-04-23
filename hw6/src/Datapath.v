@@ -90,7 +90,7 @@ module Datapath (
 	//Stage5 ~ Forward
 	wire [1:0] WB_RegWriteTarget;
 	
-	Stage1 st1(PcUpdateTarget, Pc_1_2, inst, readM1, address1, data1);
+	Stage1 st1(PcUpdateTarget, Pc_1_2, inst, readM1, address1, data1, clk, reset_n);
 
 	
 	Stage2 st2(PcUpdateTarget, Pc_1_2, inst,
