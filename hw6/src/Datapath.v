@@ -33,8 +33,7 @@ module Datapath (
 	wire [`WORD_SIZE-1:0] Pc_1_2;
 	wire [`WORD_SIZE-1:0] inst;
 	
-	Stage1 st1(PcUpdateTarget, Pc_1_2, inst, readM1, address1, data1);
-	
+		
 	//Stage2 ~ Stage3
 	wire [`WORD_SIZE-1:0] ReadData1;
 	wire [`WORD_SIZE-1:0] ReadData2;
@@ -43,7 +42,7 @@ module Datapath (
 	wire [1:0] Rt;
 	wire [1:0] Rd;
 	wire [`WORD_SIZE-1:0] Pc_2_3;
-	wire [1:0] ALUop_2_3;
+	wire [1:0] ALUOp_2_3;
 	wire [1:0] ALUSrc_2_3;
 	wire IsLHI_2_3;
 	wire [1:0] RegDest_2_3;
@@ -58,15 +57,8 @@ module Datapath (
 	wire [1:0] WB_WriteReg;
 	wire WB_RegWrite;
 	
-	Stage2 st2(PcUpdateTarget, Pc_1_2, inst,
-	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, Pc_2_3,
-	ALUOp_2_3, ALUSrc_2_3, IsLHI_2_3, RegDest_2_3,
-	MemRead_2_3, MemWrite_2_3,
-	RegWriteSrc_2_3, RegWrite_2_3,
-	WB_RegWriteData, WB_WriteReg, WB_RegWrite
-	);
-		
-	//Forward ~ Stage3
+	
+		//Forward ~ Stage3
 	wire [1:0] ControlA;
 	wire [1:0] ControlB;
 	wire [1:0] Rs_3_F;
@@ -86,8 +78,32 @@ module Datapath (
 	
 	wire [1:0] WB_RegWriteSrc;
 	
+		
+	//Stage4 ~ Stage5
+	wire [`WORD_SIZE-1:0] Pc_4_5;
+	wire [`WORD_SIZE-1:0] MemData_4_5;	
+	wire [`WORD_SIZE-1:0] ALUOut_4_5;
+	wire [1:0] RegWriteTarget_4_5;
+	wire [1:0] RegWriteSrc_4_5;
+	wire RegWrite_4_5;	
+	
+	//Stage5 ~ Forward
+	wire [1:0] WB_RegWriteTarget;
+	
+	Stage1 st1(PcUpdateTarget, Pc_1_2, inst, readM1, address1, data1);
+
+	
+	Stage2 st2(PcUpdateTarget, Pc_1_2, inst,
+	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, Pc_2_3,
+	ALUOp_2_3, ALUSrc_2_3, IsLHI_2_3, RegDest_2_3,
+	MemRead_2_3, MemWrite_2_3,
+	RegWriteSrc_2_3, RegWrite_2_3,
+	WB_RegWriteData, WB_WriteReg, WB_RegWrite,
+	output_port, is_halted, clk, reset_n
+	);
+	
 	Forward fwd(ControlA, ControlB, Rs_3_F, Rt_3_F, RegWriteTarget_4_5, WB_RegWrite,
-	EX_MEM_RegWrite, MEM_WB_RegWrite);
+	RegWrite_4_5, WB_RegWrite);
 	
 	Stage3 st3(Pc_2_3,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, 
@@ -98,33 +114,27 @@ module Datapath (
 	MemRead_3_4, MemWrite_3_4,
 	RegWriteSrc_3_4, RegWrite_3_4,
 	Rs_3_F, Rt_3_F,
-	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData
+	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
+	clk, reset_n
 	);		 
-	
-	//Stage4 ~ Stage5
-	wire [`WORD_SIZE-1:0] Pc_4_5;
-	wire [`WORD_SIZE-1:0] MemData_4_5;	
-	wire [`WORD_SIZE-1:0] ALUOut_4_5;
-	wire [1:0] RegWriteTarget_4_5;
-	wire [1:0] RegWriteSrc_4_5;
-	wire RegWrite_4_5;	
-	
-	wire [1:0] WB_RegWriteTarget;
+
 	
 	Stage4 st4(Pc_3_4,
-	ALUOut_3_4, RegWriteTarge_3_4, 
+	ALUOut_3_4, RegWriteTarget_3_4, 
 	Pc_4_5, MemData_4_5, ALUOut_4_5, RegWriteTarget_4_5,
 	MemRead_3_4, MemWrite_3_4,
 	RegWriteSrc_3_4, RegWrite_3_4,
 	RegWriteSrc_4_5, RegWrite_4_5, MEM_RegWriteData,
-	readM2, writeM2, address2, data2
+	readM2, writeM2, address2, data2,
+	clk, reset_n
 	);
 	
 	Stage5 st5(Pc_4_5,
 	ALUOut_4_5, RegWriteTarget_4_5, MemData_4_5, 
 	WB_RegWriteData, WB_RegWriteTarget,
 	RegWriteSrc_4_5, RegWrite_4_5,
-	WB_RegWrite
+	WB_RegWrite,
+	clk, reset_n
 	);
 
 endmodule

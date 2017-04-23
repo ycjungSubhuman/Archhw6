@@ -1,32 +1,28 @@
 MESSAGE "Pass 1. Scanning modules hierarchy."
 MESSAGE_SP VCP2113 "Module \$root found in current working library."
 BEGINPROGRESS Compiling...
-MESSAGE_SP VCP2876 "Implicit net declaration, symbol ALUOut_OUT has not been declared in module Stage5." "Stage5.v" 24  24
-ERROR VCP2000 "Syntax error. Unexpected token: st3[_IDENTIFIER]. Expected tokens: '[' , ',' , ';'." "c:/My_Designs/hw6/hw6/src/Datapath.v" 77  15
-ERROR VCP2571 "Instantiations must have brackets (): ReadData1." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  15
-ERROR VCP2571 "Instantiations must have brackets (): ReadData2." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  26
-ERROR VCP2571 "Instantiations must have brackets (): ImmediateExtended." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  45
-ERROR VCP2571 "Instantiations must have brackets (): Rs." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  49
-ERROR VCP2571 "Instantiations must have brackets (): Rt." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  53
-ERROR VCP2571 "Instantiations must have brackets (): Rd." "c:/My_Designs/hw6/hw6/src/Datapath.v" 78  57
-ERROR VCP2571 "Instantiations must have brackets (): Pc_3_4." "c:/My_Designs/hw6/hw6/src/Datapath.v" 79  12
-ERROR VCP2571 "Instantiations must have brackets (): ALUOut." "c:/My_Designs/hw6/hw6/src/Datapath.v" 79  20
-ERROR VCP2571 "Instantiations must have brackets (): RegWriteTarget." "c:/My_Designs/hw6/hw6/src/Datapath.v" 79  36
-ERROR VCP2571 "Instantiations must have brackets (): ALUOp_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 80  15
-ERROR VCP2571 "Instantiations must have brackets (): ALUSrc_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 80  27
-ERROR VCP2571 "Instantiations must have brackets (): IsLHI_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 80  38
-ERROR VCP2571 "Instantiations must have brackets (): RegDest_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 80  51
-ERROR VCP2571 "Instantiations must have brackets (): MemRead_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 81  17
-ERROR VCP2571 "Instantiations must have brackets (): MemWrite_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 81  31
-ERROR VCP2571 "Instantiations must have brackets (): RegWriteSrc_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 82  21
-ERROR VCP2571 "Instantiations must have brackets (): RegWrite_2_3." "c:/My_Designs/hw6/hw6/src/Datapath.v" 82  35
-ERROR VCP2571 "Instantiations must have brackets (): MemRead_OUT." "c:/My_Designs/hw6/hw6/src/Datapath.v" 83  17
-ERROR VCP2571 "Instantiations must have brackets (): MemWrite_OUT." "c:/My_Designs/hw6/hw6/src/Datapath.v" 83  31
-ERROR VCP2571 "Instantiations must have brackets (): RegWriteSrc_OUT." "c:/My_Designs/hw6/hw6/src/Datapath.v" 84  21
-ERROR VCP2571 "Instantiations must have brackets (): RegWrite_OUT." "c:/My_Designs/hw6/hw6/src/Datapath.v" 84  35
-ERROR VCP2571 "Instantiations must have brackets (): ControlA." "c:/My_Designs/hw6/hw6/src/Datapath.v" 85  14
-ERROR VCP2000 "Syntax error. Unexpected token: ). Expected tokens: '[' , '(' , ',' , ';'." "c:/My_Designs/hw6/hw6/src/Datapath.v" 86  6
 UPDATEPROGRESS 35
-WARNING VCP2515 "Undefined module: Pc_2_3 was used. Port connection rules will not be checked at such instantiations." "c:/My_Designs/hw6/hw6/src/Datapath.v" 77  23
+MESSAGE_SP VCP2113 "Module cpu found in current working library."
+WARNING VCP2515 "Undefined module: Memory was used. Port connection rules will not be checked at such instantiations." "c:/My_Designs/hw6/hw6/src/cpu_TB.v" 31  108
+MESSAGE "Pass 2. Processing instantiations."
+UPDATEPROGRESS 45
+MESSAGE "Pass 3. Processing behavioral statements."
+UPDATEPROGRESS 62
+UPDATEPROGRESS 80
+MESSAGE "Running Optimizer."
+MESSAGE "ELB/DAG code generating."
+MESSAGE_SP VCP2113 "Module \$root found in current working library."
+UPDATEPROGRESS 82
+UPDATEPROGRESS 85
+UPDATEPROGRESS 87
+UPDATEPROGRESS 90
+UPDATEPROGRESS 92
+UPDATEPROGRESS 95
+UPDATEPROGRESS 97
+MESSAGE "Unit top modules: cpu_TB."
+MESSAGE "$root top modules: ALU cpu_TB."
+UPDATEPROGRESS 100
 ENDPROGRESS Compiling...
-FAILURE "Compile failure 24 Errors 1 Warnings  Analysis time: 0[s]."
+SUCCESS "Compile success 0 Errors 1 Warnings  Analysis time: 0[s]."
+WARNING ALOG: "The source is compiled without the -dbg switch. Line breakpoints and assertion debug will not be available."
+MESSAGE "done"

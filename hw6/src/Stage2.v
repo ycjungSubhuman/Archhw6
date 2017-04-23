@@ -7,22 +7,25 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	ALUOp, ALUSrc, IsLHI, RegDest,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
-	WB_RegWriteTarget, WB_WriteReg, WB_RegWrite, OutputData, IsHalted
+	WB_RegWriteTarget, WB_WriteReg, WB_RegWrite, 
+	OutputData, IsHalted, clk, reset_n
 	);
 	//Data inout
-	output [`WORD_SIZE-1:0] PcUpdateTarget;
+	output reg [`WORD_SIZE-1:0] PcUpdateTarget;
 	input [`WORD_SIZE-1:0] Pc;
 	input [`WORD_SIZE-1:0] inst;
 	output [`WORD_SIZE-1:0] ReadData1;
 	output [`WORD_SIZE-1:0] ReadData2;
-	output [`WORD_SIZE-1:0] ImmediateExtended;
-	output [1:0] Rs;
-	output [1:0] Rt;
-	output [1:0] Rd;
+	output reg [`WORD_SIZE-1:0] ImmediateExtended;
+	output reg [1:0] Rs;
+	output reg [1:0] Rt;
+	output reg [1:0] Rd;
 	output [`WORD_SIZE-1:0] PcVal;
-	output [`WORD_SIZE-1:0] OutputData;
-	output IsHalted;
+	output reg [`WORD_SIZE-1:0] OutputData;
+	output reg IsHalted;
 	assign PcVal = Pc_REG;
+	input clk;
+	input reset_n;
 	
 	//EX Control Signals
 	output [1:0] ALUOp;
@@ -59,13 +62,13 @@ module Stage2(PcUpdateTarget, Pc, inst,
 		Rs = inst_REG[11:10];
 		Rt = inst_REG[9:8];
 		Rd = inst_REG[7:6];
-		immediateExtended = {8'b00000000, inst[7:0]};
+		ImmediateExtended = {8'b00000000, inst[7:0]};
 		if(IsBranch) begin
 			if(BranchProperty == 0 && ReadData1 == ReadData2
 				|| BranchProperty == 1 && ReadData1 != ReadData2
 				|| BranchProperty == 2 && ReadData1 > 0
 				|| BranchProperty == 3 && ReadData1 < 0)
-				PcUpdateTarget = Pc_REG + immediateExtended;
+				PcUpdateTarget = Pc_REG + ImmediateExtended;
 		end
 		else if(IsJump) PcUpdateTarget = {Pc_REG[15:12], inst_REG[11:0]};
 		else PcUpdateTarget = Pc;
@@ -79,7 +82,7 @@ module Stage2(PcUpdateTarget, Pc, inst,
 		inst_REG = inst;
 	end
 	
-	RegisterFiles regfile(WB_RegWrite, inst_REG[11:10], inst_REG[9:8], WB_WriteReg, WB_RegWriteTarget, clk, reset_n, readData1, readData2);
+	RegisterFiles regfile(WB_RegWrite, inst_REG[11:10], inst_REG[9:8], WB_WriteReg, WB_RegWriteTarget, clk, reset_n, ReadData1, ReadData2);
 	
 	Control ctrl(inst_REG, 
 	BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, 

@@ -9,7 +9,8 @@ module Stage3(Pc,
 	MemRead_OUT, MemWrite_OUT,
 	RegWriteSrc_OUT, RegWrite_OUT,
 	Rs_OUT, Rt_OUT,
-	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData
+	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
+	clk, reset_n
 	);
 	//Data inout
 	input [`WORD_SIZE-1:0] Pc;
@@ -25,6 +26,8 @@ module Stage3(Pc,
 	output [1:0] RegWriteTarget;
 	output [1:0] Rs_OUT;
 	output [1:0] Rt_OUT;
+		input clk;
+	input reset_n;
 	
 	//EX Control Signals
 	input [1:0] ALUOp;

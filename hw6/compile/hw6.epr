@@ -1,9 +1,1 @@
-"../src/Stage1.v"	0
-"../src/Control.v"	0
-"../src/opcodes.v"	0
-"../src/ALU.v"	0
-"../src/Stage4.v"	0
-"../src/Stage5.v"	0
-"../src/Stage3.v"	0
-"../src/Stage2.v"	0
-"../src/Datapath.v"	0
+"../src/cpu_TB.v"	2

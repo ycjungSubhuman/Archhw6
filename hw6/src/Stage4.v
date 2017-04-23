@@ -21,6 +21,8 @@ module Stage4(Pc,
 	output [1:0] RegWriteSrc_OUT;
 	output RegWrite_OUT;
 	output [`WORD_SIZE-1:0] MEM_RegWriteData;
+		input clk;
+	input reset_n;
 	
 	//MEM Control Signals
 	input MemRead;
