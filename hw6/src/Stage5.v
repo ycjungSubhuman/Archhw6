@@ -4,7 +4,8 @@ module Stage5(Pc,
 	ALUOut, RegWriteTarget, MemData, 
 	WriteData, RegWriteTarget_OUT,
 	RegWriteSrc, RegWrite,
-	RegWrite_OUT
+	RegWrite_OUT,
+	clk, reset_n
 	);
 	//Data inout
 	input [`WORD_SIZE-1:0] Pc;

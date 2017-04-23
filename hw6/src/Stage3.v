@@ -7,7 +7,9 @@ module Stage3(Pc,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
 	MemRead_OUT, MemWrite_OUT,
-	RegWriteSrc_OUT, RegWrite_OUT
+	RegWriteSrc_OUT, RegWrite_OUT,
+	Rs_OUT, Rt_OUT,
+	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData
 	);
 	//Data inout
 	input [`WORD_SIZE-1:0] Pc;
@@ -21,6 +23,8 @@ module Stage3(Pc,
 	assign PcVal = Pc_REG;
 	output [`WORD_SIZE-1:0] ALUOut;
 	output [1:0] RegWriteTarget;
+	output [1:0] Rs_OUT;
+	output [1:0] Rt_OUT;
 	
 	//EX Control Signals
 	input [1:0] ALUOp;
@@ -35,6 +39,12 @@ module Stage3(Pc,
 	//WB Control Signals
 	input [1:0] RegWriteSrc;
 	input RegWrite;
+	
+	//Forwarding
+	input [1:0] ControlA;
+	input [1:0] ControlB;
+	input [`WORD_SIZE-1:0] WB_RegWriteData;
+	input [`WORD_SIZE-1:0] MEM_RegWriteData;
 	
 	//Control transfer
 	output MemRead_OUT;
