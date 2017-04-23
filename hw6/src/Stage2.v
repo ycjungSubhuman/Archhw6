@@ -5,7 +5,8 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, PcVal,
 	ALUOp, ALUSrc, IsLHI, RegDest,
 	MemRead, MemWrite,
-	RegWriteSrc, RegWrite
+	RegWriteSrc, RegWrite,
+	ControlA, ControlB
 	);
 	//Data inout
 	output [`WORD_SIZE-1:0] PcUpdateTarget;
@@ -33,6 +34,10 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	//WB Control Signals
 	output [1:0] RegWriteSrc;
 	output RegWrite;
+	
+	//Forwarding
+	input [1:0] ControlA;
+	input [1:0] ControlB;
 	
 	//internal ID Control Signals
 	reg [1:0] BranchProperty;
