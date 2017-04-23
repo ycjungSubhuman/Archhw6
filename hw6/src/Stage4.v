@@ -5,7 +5,8 @@ module Stage4(Pc,
 	PcVal, MemData, ALUOut_OUT, RegWriteTarget_OUT,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
-	RegWriteSrc_OUT, RegWrite_OUT
+	RegWriteSrc_OUT, RegWrite_OUT,
+	address, data
 	);
 	//Data inout
 	input [`WORD_SIZE-1:0] Pc;
@@ -32,6 +33,10 @@ module Stage4(Pc,
 	assign RegWrite_OUT = RegWrite_REG;
 	assign ALUOut_OUT = ALUOut_REG;
 	assign RegWriteTarget_OUT = RegWriteTarget_REG;
+	
+	//Memory Communication
+	output [`WORD_SIZE-1:0] address;
+	input [`WORD_SIZE-1:0] data;
 	
 	//internal Register(EX/MEM)
 	reg [`WORD_SIZE-1:0] Pc_REG;
