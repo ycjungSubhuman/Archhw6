@@ -13,7 +13,7 @@ module Stage5(Pc,
 	input [1:0] RegWriteTarget;
 	input [`WORD_SIZE-1:0] MemData;
 	output reg [`WORD_SIZE-1:0] WriteData;
-	output reg [`WORD_SIZE-1:0] RegWriteTarget_OUT;	
+	output reg [1:0] RegWriteTarget_OUT;	
 		input clk;
 	input reset_n;
 	

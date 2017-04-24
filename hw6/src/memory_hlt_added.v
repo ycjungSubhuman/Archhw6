@@ -35,11 +35,11 @@ module Memory(clk, reset_n, i_readM, i_writeM, i_address, i_data, d_readM, d_wri
 	reg [`WORD_SIZE-1:0] d_outputData;
 	
 	assign i_data = i_readM?i_outputData:`WORD_SIZE'bz;
-	assign d_data = d_readM?d_outputData:`WORD_SIZE'bz;
+	assign d_data = d_readM?d_outputData:`WORD_SIZE'bz;	
 	
 	always@(posedge clk)
 		if(!reset_n)
-			begin											  
+			begin
 				memory[16'h0] <= 16'h6000;
 				memory[16'h1] <= 16'h6000;
 				memory[16'h2] <= 16'hf01c;
@@ -137,7 +137,9 @@ module Memory(clk, reset_n, i_readM, i_writeM, i_address, i_data, d_readM, d_wri
 			end
 		else
 			begin
-				if(i_readM)i_outputData <= memory[i_address];
+				if(i_readM) begin
+					i_outputData <= memory[i_address];
+				end
 				if(i_writeM)memory[i_address] <= i_data;
 				if(d_readM)d_outputData <= memory[d_address];
 				if(d_writeM)memory[d_address] <= d_data;

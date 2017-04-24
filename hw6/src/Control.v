@@ -14,7 +14,7 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 	output reg MemWrite;
 	output reg [1:0] RegWriteSrc;
 	output reg  RegWrite;
-	output reg [2:0] RegDest;
+	output reg [1:0] RegDest;
 	output reg IsHLT;
 					 
 	wire [3:0] opcode = inst[`WORD_SIZE-1: `WORD_SIZE-4];

@@ -1,0 +1,15 @@
+[Files List]
+C:\Aldec\Active-HDL-Student-Edition\vlib\std/src/standard.vhd=S
+c:\My_Designs\hw6\hw6/src/ALU.v=S
+c:\My_Designs\hw6\hw6/src/cpu.v=S
+c:\My_Designs\hw6\hw6/src/Control.v=S
+c:\My_Designs\hw6\hw6/src/Stage2.v=S
+c:\My_Designs\hw6\hw6/src/register_files.v=S
+c:\My_Designs\hw6\hw6/src/Stage5.v=S
+c:\My_Designs\hw6\hw6/src/Stage4.v=S
+c:\My_Designs\hw6\hw6/src/Stage3.v=S
+c:\My_Designs\hw6\hw6/src/Forward.v=S
+c:\My_Designs\hw6\hw6/src/Stage1.v=S
+c:\My_Designs\hw6\hw6/src/Datapath.v=S
+c:\My_Designs\hw6\hw6/src/memory_hlt_added.v=S
+c:\My_Designs\hw6\hw6/src/cpu_TB.v=S
