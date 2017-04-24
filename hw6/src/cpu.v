@@ -40,7 +40,7 @@ module cpu(Clk, Reset_N, i_readM, i_writeM, i_address, i_data, d_readM, d_writeM
 	output is_halted;
 	wire is_halted;
 	
-	initial num_inst = -3; 
+	initial num_inst = -4; 
 	
 
     Datapath dpath (

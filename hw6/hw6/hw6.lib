@@ -1,8 +1,8 @@
-timestamp=1492964631836
+timestamp=1493046129454
 
 [~A]
 LastVerilogToplevel=cpu_TB
-ModifyID=46
+ModifyID=108
 Version=74
 c:/My_Designs/hw6/hw6/src/Control.v=0*102037*103105
 c:/My_Designs/hw6/hw6/src/Datapath.v=0*218010*223895
@@ -16,121 +16,134 @@ c:/My_Designs/hw6/hw6/src/Stage5.v=0*140105*140851
 c:/My_Designs/hw6/hw6/src/cpu.v=0*249656*255952
 c:/My_Designs/hw6/hw6/src/cpu_TB.v=0*42658*51949
 c:/My_Designs/hw6/hw6/src/memory_hlt_added.v=0*208438*209883
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Control.v=0*512673*513828
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Control.v_Stage3.v=0*359412*361840
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Datapath.v=0*502819*509079
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Forward.v=0*350306*350996
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage2.v=0*535956*538310
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage3.v=0*539653*541367
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage4.v=0*510322*511476
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage4.v_Stage3.v=0*496300*498663
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage5.v=0*486531*487332
+c:/Users/Administrator/Documents/Archhw6/hw6/src/Stage5.v_Stage2.v=0*491856*494571
+c:/Users/Administrator/Documents/Archhw6/hw6/src/cpu.v=0*472760*479351
+c:/Users/Administrator/Documents/Archhw6/hw6/src/cpu_TB.v=0*288133*297575
+c:/Users/Administrator/Documents/Archhw6/hw6/src/memory_hlt_added.v=0*281730*283214
 
 [$root]
-A/$root=22|||1*748252
-BinI32/$root=3*493865
-SLP=3*493969
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|c73a565f2ade592f8ac1c68f484c9216fb9175d67e92b4fcde8991e75e1c067f
+A/$root=22|||1*1474500
+BinI32/$root=3*990495
+SLP=3*990599
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|c73a565f2ade592f8ac1c68f484c9216a3f188ace2afdf652e273230fde7751c
 
 [ALU]
-A/ALU=22|./../src/ALU.v|4|1*710752
-BinI32/ALU=3*472090
+A/ALU=22|./../src/ALU.v|4|1*1379950
+BinI32/ALU=3*919238
 R=./../src/ALU.v|4
-SLP=3*473233
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|b3eb40c25b2a3c0379c7730185183eec8d57b23bdce6c8dad8178ef8ee3eec29
+SLP=3*920384
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|b3eb40c25b2a3c0379c7730185183eec7e0936cd5de2241a6e8918a1be6f456d
 
 [Control]
-A/Control=22|./../src/Control.v|3|1*748626
-BinI32/Control=3*494037
+A/Control=22|./../src/Control.v|3|1*1465651
+BinI32/Control=3*982979
 R=./../src/Control.v|3
-SLP=3*495707
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|6797945b511c8434c38a5454b770999c26527262ddaa47cb266f3a3c4d9b973a6dfd141fd6f6ab7a49a2090dbcd83be3
+SLP=3*984921
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|6797945b511c8434c38a5454b770999c26527262ddaa47cb266f3a3c4d9b973a3eb4538274b1a3af201c8d68d9cf6661
 
 [Datapath]
-A/Datapath=22|./../src/Datapath.v|10|1*737184
-BinI32/Datapath=3*491604
+A/Datapath=22|./../src/Datapath.v|10|1*1406825
+BinI32/Datapath=3*940024
 R=./../src/Datapath.v|10
-SLP=3*491836
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|a669a8c200b0b8d1050cae0727db5425a2d64f5b3f1ab053059fc06bddcad1059e9da8293f7875b1f530176de7cd9c21
+SLP=3*940505
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|a669a8c200b0b8d1050cae0727db5425a2d64f5b3f1ab053059fc06bddcad10539c0c0e3b1255d3546ed0a455e7017c4
 
 [Forward]
-A/Forward=22|./../src/Forward.v|3|1*746831
-BinI32/Forward=3*492959
+A/Forward=22|./../src/Forward.v|3|1*1405358
+BinI32/Forward=3*938807
 R=./../src/Forward.v|3
-SLP=3*493538
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|abd39f8e6467f1d5aec3da8181f7fc5626527262ddaa47cb266f3a3c4d9b973a5df515c35e7a5c28cc531f96d718b766
+SLP=3*939596
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|abd39f8e6467f1d5aec3da8181f7fc5626527262ddaa47cb266f3a3c4d9b973a657e0007a512ee9f3843dae150decae6
 
 [Memory]
-A/Memory=22|./../src/memory_hlt_added.v|7|1*592205
-BinI32/Memory=3*399054
+A/Memory=22|./../src/memory_hlt_added.v|7|1*812965
+BinI32/Memory=3*537923
 R=./../src/memory_hlt_added.v|7
-SLP=3*400847
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|ebff02703061a61c6a5bcb20ada9dd29643b9594976e0aa456a4cb8bdc088806
+SLP=3*539709
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|ebff02703061a61c6a5bcb20ada9dd292cd7b28b62d2265492ad45eca3527de1
 
 [RegisterFiles]
-A/RegisterFiles=22|./../src/register_files.v|3|1*750975
-BinI32/RegisterFiles=3*497036
+A/RegisterFiles=22|./../src/register_files.v|3|1*1468000
+BinI32/RegisterFiles=3*986414
 R=./../src/register_files.v|3
-SLP=3*497943
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|0422c61e9be97c1a93b0a0dbf1014d2acc39d83eb5bc91c1b7f5bfe2ad199ae12efa477cb32f25e9e627b8b562cfa545
+SLP=3*987321
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|0422c61e9be97c1a93b0a0dbf1014d2acc39d83eb5bc91c1b7f5bfe2ad199ae15433c81f502dac55d4a4b3ee12de7bfc
 
 [Stage1]
-A/Stage1=22|./../src/Stage1.v|3|1*711991
-BinI32/Stage1=3*473872
+A/Stage1=22|./../src/Stage1.v|3|1*1381194
+BinI32/Stage1=3*921023
 R=./../src/Stage1.v|3
-SLP=3*475012
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|6b3754f407f2b04777cd996ec77c513da628e42ba70841e54678d4f44ef29b55
+SLP=3*922159
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|6b3754f407f2b04777cd996ec77c513d4e8f72021e1ca59e462243a5f9bf3c71
 
 [Stage2]
-A/Stage2=22|./../src/Stage2.v|5|1*753207
-BinI32/Stage2=3*498468
+A/Stage2=22|./../src/Stage2.v|5|1*1470232
+BinI32/Stage2=3*987846
 R=./../src/Stage2.v|5
-SLP=3*500157
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|fe6a9cfc8a15d46487a54110585a2576e6185ce4ce39cb084658cedd6617dd4c
+SLP=3*989583
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|fe6a9cfc8a15d46487a54110585a257615df5802243f4198049e0a25e429f7f6
 
 [Stage3]
-A/Stage3=22|./../src/Stage3.v|3|1*722750
-BinI32/Stage3=3*482393
+A/Stage3=22|./../src/Stage3.v|3|1*1474874
+BinI32/Stage3=3*990667
 R=./../src/Stage3.v|3
-SLP=3*485022
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|f70efa8ed9e48d12d69e1a8c6b91c878f36382a779ca2d3e04bfcfce689e12b9
+SLP=3*993825
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|f70efa8ed9e48d12d69e1a8c6b91c878696a6ec8b788d18c6fa63f8a6fe8ac80
 
 [Stage4]
-A/Stage4=22|./../src/Stage4.v|3|1*728455
-BinI32/Stage4=3*486145
+A/Stage4=22|./../src/Stage4.v|3|1*1414411
+BinI32/Stage4=3*941044
 R=./../src/Stage4.v|3
-SLP=3*487954
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|8acd3990df617a20d2c159f94558864465cae8d2b42789814d5023d81039516c
+SLP=3*942826
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|8acd3990df617a20d2c159f9455886449261fae8c76eba273c0881f7c55822f0
 
 [Stage5]
-A/Stage5=22|./../src/Stage5.v|3|1*733125
-BinI32/Stage5=3*488725
+A/Stage5=22|./../src/Stage5.v|3|1*1402734
+BinI32/Stage5=3*937005
 R=./../src/Stage5.v|3
-SLP=3*490068
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|3620fac62c1d3edfbcef60674c389169c858a89401b3c2ec7916f6c9aed06c23
+SLP=3*938327
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|3620fac62c1d3edfbcef60674c389169b08ebc94eaf9659d895293e6b535a6fa
 
 [cpu]
-A/cpu=22|./../src/cpu.v|5|1*744189
-BinI32/cpu=3*492030
+A/cpu=22|./../src/cpu.v|5|1*1335504
+BinI32/cpu=3*887277
 R=./../src/cpu.v|5
-SLP=3*492522
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|13d2a6012ae176ed67c47d3a5127b0605eb968132e0ca7a7a5c924f00692453a
+SLP=3*887769
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|13d2a6012ae176ed67c47d3a5127b0601e6e6ab16aaf23537cf260e2832fa08b
 
 [cpu_TB]
-A/cpu_TB=22|./../src/cpu_TB.v|10|1*138975
-BinI32/cpu_TB=3*101002
+A/cpu_TB=22|./../src/cpu_TB.v|10|1*851915
+BinI32/cpu_TB=3*562738
 R=./../src/cpu_TB.v|10
-SLP=3*105098
-Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|4c2b234e44c8da4b84a1dcf9bb620ee2e416961be914e649e5f8f72ec5f66cbd
+SLP=3*566803
+Version=10.3.3559.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|4c2b234e44c8da4b84a1dcf9bb620ee242f364f580db20d1eafa838520e2647d
 
 [~MFT]
-0=8|0hw6.mgf|261683|136603
-1=8|1hw6.mgf|753207|713717
-3=16|3hw6.mgf|500157|468188
+0=6|0hw6.mgf|541367|283218
+1=4|1hw6.mgf|1474874|1436713
+3=8|3hw6.mgf|993825|960417
 
 [~U]
-$root=12|0*258054|
-ALU=12|0*246042|
-Control=12|0*258348|
-Datapath=12|0*248947|
-Forward=12|0*256726|
-Memory=12|0*208178|
-RegisterFiles=12|0*258681|
-Stage1=12|0*246256|
-Stage2=12|0*258956|
-Stage3=12|0*247570|
-Stage4=12|0*248028|
-Stage5=12|0*248405|
-cpu=12|0*249302|
-cpu_TB=12|0*42432||0x10
+$root=12|0*538864|
+ALU=12|0*499536|
+Control=12|0*534902|
+Datapath=12|0*502464|
+Forward=12|0*502207|
+Memory=12|0*284008|
+RegisterFiles=12|0*535235|
+Stage1=12|0*499750|
+Stage2=12|0*535510|
+Stage3=12|0*539174|
+Stage4=12|0*509945|
+Stage5=12|0*501922|
+cpu=12|0*472406|
+cpu_TB=12|0*287907||0x10

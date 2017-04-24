@@ -36,12 +36,13 @@ module Stage5(Pc,
 	reg RegWrite_REG;
 	
 	always @(*) begin
-		if(RegWriteSrc_REG == 0) WriteData = ALUOut;
+		if(RegWriteSrc_REG == 0) WriteData = ALUOut_REG;
 		else if(RegWriteSrc_REG == 1) WriteData = MemData_REG;
 		else if(RegWriteSrc_REG == 2) WriteData = Pc_REG;
 	end
 	
 	always @(posedge clk) begin
+		
 		Pc_REG = Pc;
 		ALUOut_REG = ALUOut;
 		RegWriteTarget_REG = RegWriteTarget;
