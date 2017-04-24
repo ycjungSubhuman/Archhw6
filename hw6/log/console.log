@@ -39884,4 +39884,43 @@ run
 # KERNEL: Test #  2-1 has been failed!
 # KERNEL: output_port = 0x0 (Ans : 0x1)
 # KERNEL: Clock #   13
-# KERNEL: The testbench
+# KERNEL: The testbench is finished. Summarizing...
+# KERNEL: Test #  2-1 :     Wrong
+# KERNEL: Test #  2-2 : No Result
+# KERNEL: Test #  3-1 : No Result
+# KERNEL: Test #  3-2 : No Result
+# KERNEL: Test #  3-3 : No Result
+# KERNEL: Test #  4-1 : No Result
+# KERNEL: Test #  4-2 : No Result
+# KERNEL: Test #  4-3 : No Result
+# KERNEL: Test #  5-1 : No Result
+# KERNEL: Test #  5-2 : No Result
+# KERNEL: Test #  5-3 : No Result
+# KERNEL: Test #  5-4 : No Result
+# KERNEL: Test #  5-5 : No Result
+# KERNEL: Test #  5-6 : No Result
+# KERNEL: Test #  6-1 : No Result
+# KERNEL: Test #  6-2 : No Result
+# KERNEL: Test #  6-3 : No Result
+# KERNEL: Test #  7-1 : No Result
+# KERNEL: Test #  7-2 : No Result
+# KERNEL: Test #  7-3 : No Result
+# KERNEL: Test #  8-1 : No Result
+# KERNEL: Test #  8-2 : No Result
+# KERNEL: Test #  8-3 : No Result
+# KERNEL: Test #  9-1 : No Result
+# KERNEL: Test #  9-2 : No Result
+# KERNEL: Test #  9-3 : No Result
+# KERNEL: Test # 10-1 : No Result
+# KERNEL: Test # 10-2 : No Result
+# KERNEL: Test # 10-3 : No Result
+# KERNEL: Test # 11-1 : No Result
+# KERNEL: Test # 11-2 : No Result
+# KERNEL: Test # 11-3 : No Result
+# KERNEL: Test # 12-1 : No Result
+# KERNEL: Test # 12-2 : No Result
+# KERNEL: Pass : 4/38
+# RUNTIME: Info: RUNTIME_0068 cpu_TB.v (141): $finish called.
+# KERNEL: Time: 1450 ns,  Iteration: 0,  Instance: /cpu_TB,  Process: @INITIAL#124_6@.
+# KERNEL: stopped at time: 1450 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
