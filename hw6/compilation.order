@@ -12,3 +12,4 @@
 .\src\Stage4.v
 .\src\Stage5.v
 .\src\Forward.v
+.\src\Hazard.v

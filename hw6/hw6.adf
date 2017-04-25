@@ -60,6 +60,7 @@ Selected=
 /Stage4.v=-1
 /Stage5.v=-1
 /Forward.v=-1
+/Hazard.v=-1
 
 [Files.Data]
 .\src\Control.v=Verilog Source Code
@@ -77,3 +78,4 @@ Selected=
 .\src\Stage4.v=Verilog Source Code
 .\src\Stage5.v=Verilog Source Code
 .\src\Forward.v=Verilog Source Code
+.\src\Hazard.v=Verilog Source Code
