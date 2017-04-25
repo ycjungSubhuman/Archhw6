@@ -6,16 +6,18 @@
 `include "Stage4.v"
 `include "Stage5.v"
 `include "Forward.v"
+`include "Hazard.v"
 
 module Datapath ( 
 	readM1, address1, data1,
 	readM2, writeM2, address2, data2, 
-	reset_n, clk, output_port, is_halted); 
+	reset_n, clk, output_port, is_halted, stalled); 
 	
 	output wire readM1;
 	output [`WORD_SIZE-1:0] address1;
 	inout [`WORD_SIZE-1:0] data1;
 	assign data1 = 16'bz;
+	output stalled;
 	
 	output readM2;
 	output writeM2;
@@ -56,6 +58,7 @@ module Datapath (
 	wire [1:0] RegWriteSrc_2_3;
 	wire RegWrite_2_3;
 	wire OutputPortWrite_2_3;
+	assign stalled = InsertBubble;
 
 	
 	//Stage 5 ~ Stage2
@@ -96,8 +99,14 @@ module Datapath (
 	//Stage5 ~ Forward
 	wire [1:0] WB_RegWriteTarget;
 	
-	Stage1 st1(PcUpdateTarget, Pc_1_2, inst, readM1, address1, data1, clk, reset_n);
-
+	//Hazard Detection
+	wire PcWrite;
+	wire IF_ID_Write;
+	wire InsertBubble;
+	
+	Stage1 st1(PcUpdateTarget, Pc_1_2, PcWrite, inst, readM1, address1, data1, clk, reset_n);
+	
+	Hazard hzd(PcWrite, IF_ID_Write, InsertBubble, MemRead_3_4, clk);
 	
 	Stage2 st2(PcUpdateTarget, Pc_1_2, inst,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, Pc_2_3,
@@ -105,6 +114,7 @@ module Datapath (
 	MemRead_2_3, MemWrite_2_3,
 	RegWriteSrc_2_3, RegWrite_2_3,
 	WB_RegWriteData, WB_RegWriteTarget, WB_RegWrite,
+	IF_ID_Write, InsertBubble,
 	 is_halted, clk, reset_n
 	);
 	

@@ -132,6 +132,10 @@ module Stage3(Pc,
 		RegWriteSrc_REG = RegWriteSrc;
 		RegWrite_REG = RegWrite;
 		OutputPortWrite_REG = OutputPortWrite;
+		
+		if(!reset_n) begin
+			MemWrite_REG = 0;
+		end
 	end
 	
 	ALU alu(overflow, ALUInterOut, operandA, operandB, ALUOp_REG);

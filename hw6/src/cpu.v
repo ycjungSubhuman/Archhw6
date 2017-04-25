@@ -40,16 +40,20 @@ module cpu(Clk, Reset_N, i_readM, i_writeM, i_address, i_data, d_readM, d_writeM
 	output is_halted;
 	wire is_halted;
 	
-	initial num_inst = -4; 
+	initial num_inst = -4;
+	wire stalled;
 	
 
     Datapath dpath (
 		.readM1(i_readM), .address1(i_address), .data1(i_data),
 		.readM2(d_readM), .writeM2(d_writeM), .address2(d_address), .data2(d_data), 
-		.reset_n(Reset_N), .clk(Clk), .output_port(output_port), .is_halted(is_halted));
+		.reset_n(Reset_N), .clk(Clk), .output_port(output_port), .is_halted(is_halted), .stalled(stalled));
 		
 	always@(posedge Clk) begin
-		num_inst += 1;
+		if(!stalled) begin
+			num_inst += 1;
+		end
+		else $display("SKIPPING");
 	end
 
 endmodule

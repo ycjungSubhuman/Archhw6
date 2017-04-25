@@ -70,20 +70,12 @@ module Stage4(Pc,
 	end
 	
 	always@(*) begin
-		if(writeM) writeM = 0;
-		else if(readM) begin
-			MemData = data;
-		end
+		$display("READDATA: %x ADDRESS: %x,", data, address);
+		MemData = data;
 	end
 	
 	always@(posedge clk) begin
-		address = ALUOut_REG;
-		if(MemRead_REG == 1) readM = 1;
-		else if (MemWrite_REG == 1) begin
-			writeM = 1;
-			writeBuf = MemWriteData;
-		end
-		
+
 		
 		//Update Register values
 		Pc_REG = Pc;
@@ -94,6 +86,19 @@ module Stage4(Pc,
 		MemWrite_REG = MemWrite;
 		RegWriteSrc_REG = RegWriteSrc;
 		RegWrite_REG = RegWrite;
+		
+		address = ALUOut_REG;
+		
+		if(MemRead_REG == 1) begin
+			$display("*******READ START*******");
+			readM = 1;
+			writeM = 0;
+		end
+		else if (MemWrite_REG == 1) begin
+			writeM = 1;
+			readM = 0;
+			writeBuf = MemWriteData;
+		end
 	end
 	
 endmodule

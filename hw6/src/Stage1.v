@@ -1,12 +1,13 @@
 `include "opcodes.v"
 
-module Stage1(PcUpdateTarget, Pc, inst, readM, address, data, clk, reset_n);
+module Stage1(PcUpdateTarget, Pc, PcWrite, inst, readM, address, data, clk, reset_n);
 	input [`WORD_SIZE-1:0] PcUpdateTarget;
 	output [`WORD_SIZE-1:0] Pc;
 	output reg [`WORD_SIZE-1:0] inst;
 	output reg readM;
 	output reg [`WORD_SIZE-1:0] address;
 	inout [`WORD_SIZE-1:0] data;
+	input PcWrite;
 	assign data = 16'bz;
 	input clk;
 	input reset_n;
@@ -28,7 +29,8 @@ module Stage1(PcUpdateTarget, Pc, inst, readM, address, data, clk, reset_n);
 	end
 	
 	always @(posedge clk) begin
-		internalPc = PcUpdateTarget;
+		$display("Stage1: PCWrite: %x", PcWrite);
+		if(PcWrite) internalPc = PcUpdateTarget;
 
 		readM = 1;
 		address = internalPc;

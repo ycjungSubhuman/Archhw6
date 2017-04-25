@@ -1,0 +1,1 @@
+-o c:/My_Designs/hw6/hw6/compile -lc c:/My_Designs/hw6/library.cfg -fl c:/My_Designs/hw6/hw6/projlib.cfg -pli "C:/Aldec/Active-HDL-Student-Edition/bin/systf.dll" -epr c:/My_Designs/hw6/hw6/compile/hw6.epr -O2 -sve -msg 5 -sv2k12 -work hw6 c:/My_Designs/hw6/hw6/src/Stage4.v 

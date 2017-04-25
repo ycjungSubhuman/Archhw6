@@ -8,6 +8,7 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
 	WB_RegWriteData, WB_WriteReg, WB_RegWrite,
+	IF_ID_Write, InsertBubble,
 	IsHalted, clk, reset_n
 	);
 	//Data inout
@@ -26,20 +27,27 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	input clk;
 	input reset_n;
 	
+	input IF_ID_Write;
+	input InsertBubble;
+	
 	//EX Control Signals
 	output [2:0] ALUOp;
 	output ALUSrc;
 	output IsLHI;
 	output [1:0] RegDest;
 	output OutputPortWrite;
+	assign OutputPortWrite = (InsertBubble) ? 0: _OutputPortWrite;
 	
 	//MEM Control Signals
 	output MemRead;
 	output MemWrite;
+	assign MemRead = (InsertBubble)	? 0 : _MemRead;
+	assign MemWrite = (InsertBubble)	? 0 : _MemWrite;
 	
 	//WB Control Signals
 	output [1:0] RegWriteSrc;
-	output RegWrite;	 
+	output RegWrite;
+	assign RegWrite = (InsertBubble) ? 0: _RegWrite;
 	
 	//internal ID Control Signals
 	reg [1:0] BranchProperty;
@@ -59,38 +67,47 @@ module Stage2(PcUpdateTarget, Pc, inst,
 	
 	always @(*) begin
 		$display("Stage2 Rs: %x, Rt: %x, ReadData1: %x, ReadData2: %x", Rs, Rt, ReadData1, ReadData2);
-		if(IsBranch) begin
-			if(BranchProperty == 0 && ReadData1 == ReadData2
-				|| BranchProperty == 1 && ReadData1 != ReadData2
-				|| BranchProperty == 2 && ReadData1 > 0
-				|| BranchProperty == 3 && ReadData1 < 0)
-				PcUpdateTarget = Pc_REG + ImmediateExtended;
+		if(!InsertBubble) begin
+			if(IsBranch) begin
+				if(BranchProperty == 0 && ReadData1 == ReadData2
+					|| BranchProperty == 1 && ReadData1 != ReadData2
+					|| BranchProperty == 2 && ReadData1 > 0
+					|| BranchProperty == 3 && ReadData1 < 0)
+					PcUpdateTarget = Pc_REG + ImmediateExtended;
+			end
+	
+			Rs = inst_REG[11:10];
+			Rt = inst_REG[9:8];
+			Rd = inst_REG[7:6];
+			if(IsJump) PcUpdateTarget = {Pc_REG[15:12], inst_REG[11:0]};
+	 		else PcUpdateTarget = Pc;
+			if(IsHLT) IsHalted = 1;
+			else IsHalted = 0;
+			ImmediateExtended = {8'b00000000, inst_REG[7:0]};
+			if(WB_RegWrite == 1) begin
+				//$display("WB_RegWrite: %d, WB_WriteReg: %d, WB_RegWriteData: %d", WB_RegWrite, WB_WriteReg, WB_RegWriteData);
+			end
 		end
-
-		Rs = inst_REG[11:10];
-		Rt = inst_REG[9:8];
-		Rd = inst_REG[7:6];
-		if(IsJump) PcUpdateTarget = {Pc_REG[15:12], inst_REG[11:0]};
- 		else PcUpdateTarget = Pc;
-		if(IsHLT) IsHalted = 1;
-		else IsHalted = 0;
-		ImmediateExtended = {8'b00000000, inst_REG[7:0]};
-		if(WB_RegWrite == 1) begin
-			//$display("WB_RegWrite: %d, WB_WriteReg: %d, WB_RegWriteData: %d", WB_RegWrite, WB_WriteReg, WB_RegWriteData);
+		else begin
 		end
 	end
 	
 	always @(posedge clk) begin
-
-		
-		Pc_REG = Pc;
-		inst_REG = inst;  
+				if(InsertBubble) $display("INSERTING BUBBLEEE");
+		if(IF_ID_Write) begin
+			Pc_REG = Pc;
+			inst_REG = inst;
+		end
 	end
+
+	wire _MemRead;
+	wire _MemWrite;
+	wire _RegWrite;
 	
 	RegisterFiles regfile(WB_RegWrite, Rs, Rt, WB_WriteReg, WB_RegWriteData, clk, reset_n, ReadData1, ReadData2);
 	
 	Control ctrl(inst_REG, 
-	BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, 
-	IsLHI, MemRead, MemWrite, RegWriteSrc, RegWrite, RegDest, IsHLT);
+	BranchProperty, IsJump, IsBranch, _OutputPortWrite, IsJumpReg, ALUOp, ALUSrc, 
+	IsLHI, _MemRead, _MemWrite, RegWriteSrc, _RegWrite, RegDest, IsHLT);
 	
 endmodule
