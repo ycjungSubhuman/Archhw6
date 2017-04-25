@@ -27,6 +27,11 @@ module Datapath (
 	output reg [15:0] output_port;
 	output reg is_halted;
 	
+	always @(posedge clk) begin
+		$display("inst: %x, RegWrite_2_3: %x, RegWrite_3_4: %x, RegWrite_4_5: %x, WB_RegWrite: %x", inst, RegWrite_2_3, RegWrite_3_4, RegWrite_4_5, WB_RegWrite);
+		//$display("stage 1 of %x finished : Rs:%x Rt:%x Exmemdest:%x Wbdest: %x, wb1: %x, w2, %x", inst, Rs_3_F, Rt_3_F, RegWriteTarget_4_5, WB_RegWriteTarget, RegWrite_4_5, WB_RegWrite);
+	end
+	
 	
 	//Stage1 ~ Stage2
 	wire [`WORD_SIZE-1:0] PcUpdateTarget;
@@ -50,11 +55,11 @@ module Datapath (
 	wire MemWrite_2_3;
 	wire [1:0] RegWriteSrc_2_3;
 	wire RegWrite_2_3;
+	wire OutputPortWrite_2_3;
 
 	
 	//Stage 5 ~ Stage2
 	wire [`WORD_SIZE-1:0] WB_RegWriteData;
-	wire [1:0] WB_WriteReg;
 	wire WB_RegWrite;
 	
 	
@@ -96,11 +101,11 @@ module Datapath (
 	
 	Stage2 st2(PcUpdateTarget, Pc_1_2, inst,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, Pc_2_3,
-	ALUOp_2_3, ALUSrc_2_3, IsLHI_2_3, RegDest_2_3,
+	ALUOp_2_3, ALUSrc_2_3, OutputPortWrite_2_3, IsLHI_2_3, RegDest_2_3,
 	MemRead_2_3, MemWrite_2_3,
 	RegWriteSrc_2_3, RegWrite_2_3,
-	WB_RegWriteData, WB_WriteReg, WB_RegWrite,
-	output_port, is_halted, clk, reset_n
+	WB_RegWriteData, WB_RegWriteTarget, WB_RegWrite,
+	 is_halted, clk, reset_n
 	);
 	
 	Forward fwd(ControlA, ControlB, Rs_3_F, Rt_3_F, RegWriteTarget_4_5, WB_RegWriteTarget,
@@ -109,13 +114,13 @@ module Datapath (
 	Stage3 st3(Pc_2_3,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, 
 	Pc_3_4, ALUOut_3_4, RegWriteTarget_3_4,
-	ALUOp_2_3, ALUSrc_2_3, IsLHI_2_3, RegDest_2_3,
+	ALUOp_2_3, ALUSrc_2_3, OutputPortWrite_2_3, IsLHI_2_3, RegDest_2_3,
 	MemRead_2_3, MemWrite_2_3,
 	RegWriteSrc_2_3, RegWrite_2_3,
 	MemRead_3_4, MemWrite_3_4,
 	RegWriteSrc_3_4, RegWrite_3_4, MemWriteData_3_4,
 	Rs_3_F, Rt_3_F,
-	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
+	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData, output_port,
 	clk, reset_n
 	);		 
 

@@ -63,7 +63,6 @@ module Stage4(Pc,
 	
 	assign ALUOut_OUT = ALUOut_REG;
 	assign MEM_RegWriteData = ALUOut_REG;
-	assign RegWriteTarget_OUT = RegWriteTarget_REG;
 	assign RegWriteSrc_OUT = RegWriteSrc_REG;
 	assign RegWrite_OUT = RegWrite_REG;
 	

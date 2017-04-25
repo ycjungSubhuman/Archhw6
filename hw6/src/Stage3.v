@@ -3,13 +3,13 @@
 module Stage3(Pc,
 	ReadData1, ReadData2, ImmediateExtended, Rs, Rt, Rd, 
 	PcVal, ALUOut, RegWriteTarget,
-	ALUOp, ALUSrc, IsLHI, RegDest,
+	ALUOp, ALUSrc, OutputPortWrite, IsLHI, RegDest,
 	MemRead, MemWrite,
 	RegWriteSrc, RegWrite,
 	MemRead_OUT, MemWrite_OUT,
 	RegWriteSrc_OUT, RegWrite_OUT, MemWriteData_OUT,
 	Rs_OUT, Rt_OUT,
-	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,
+	ControlA, ControlB, WB_RegWriteData, MEM_RegWriteData,	 OutputData,
 	clk, reset_n
 	);
 	//Data inout
@@ -24,9 +24,10 @@ module Stage3(Pc,
 	assign PcVal = Pc_REG;
 	output reg [`WORD_SIZE-1:0] ALUOut;
 	output reg [1:0] RegWriteTarget;
-	output reg [1:0] Rs_OUT;
-	output reg [1:0] Rt_OUT;
+	output [1:0] Rs_OUT;
+	output [1:0] Rt_OUT;
 	output reg [`WORD_SIZE-1:0] MemWriteData_OUT;
+	output reg [`WORD_SIZE-1:0] OutputData;
 		input clk;
 	input reset_n;
 	
@@ -35,6 +36,7 @@ module Stage3(Pc,
 	input ALUSrc;
 	input IsLHI;
 	input [1:0] RegDest;
+	input OutputPortWrite;
 	
 	//MEM Control Signals
 	input MemRead;
@@ -68,6 +70,9 @@ module Stage3(Pc,
 	reg [1:0] Rs_REG;
 	reg [1:0] Rt_REG;
 	reg [1:0] Rd_REG;
+	assign Rs_OUT = Rs_REG;
+	assign Rt_OUT = Rt_REG;	 
+	
 	//EX Control Signals
 	reg [2:0] ALUOp_REG;
 	reg ALUSrc_REG;
@@ -80,20 +85,20 @@ module Stage3(Pc,
 	reg [1:0] RegWriteSrc_REG;
 	reg RegWrite_REG;
 	
+	reg OutputPortWrite_REG;
+	
 	reg overflow;  
 	reg [`WORD_SIZE-1:0] operandA;
 	reg [`WORD_SIZE-1:0] operandB;
 	reg [`WORD_SIZE-1:0] ALUInterOut;
 	
 	always @(*) begin
-		Rs_OUT = Rs_REG;
-		Rt_OUT = Rt_REG;
-		if(ControlA == 0) operandA = ReadData1;
+		if(ControlA == 0) operandA = ReadData1_REG;
 		else if(ControlA == 1) operandA = MEM_RegWriteData;
 		else if(ControlA == 2) operandA = WB_RegWriteData;
 		if(ALUSrc_REG == 1)	operandB = ImmediateExtended_REG;
 		else begin
-			if(ControlB == 0) operandB = ReadData2;
+			if(ControlB == 0) operandB = ReadData2_REG;
 			else if(ControlB == 1) operandB = MEM_RegWriteData;
 			else if(ControlB == 2) operandB = WB_RegWriteData;
 		end
@@ -101,7 +106,13 @@ module Stage3(Pc,
 		if(RegDest_REG == 0) RegWriteTarget = Rd_REG;
 		else if(RegDest_REG == 1) RegWriteTarget = Rt_REG;
 		if(IsLHI_REG == 0) ALUOut = ALUInterOut;
-		else if(IsLHI_REG == 1) ALUOut = operandA << 8;
+		else if(IsLHI_REG == 1) ALUOut = ImmediateExtended_REG << 8;
+		$display("OperandA: %x, OperandB: %x, IsLHI_REG: %x, OutputPortWrite_REG: %x, RegWrite_REG: %x, ALUOut: %x, ALUOp: %x, RegWriteTarget: %x, ControlA: %x, ControlB: %x", 
+			operandA, operandB, IsLHI_REG, OutputPortWrite_REG, RegWrite_REG, ALUOut, ALUOp, RegWriteTarget, ControlA, ControlB);
+		if(OutputPortWrite_REG) begin
+			OutputData = operandA;
+			$display("outputting: OutputData: %x, ControlA: %x", operandA, ControlA);
+		end
 	end
 	
 	always @(posedge clk) begin
@@ -120,8 +131,9 @@ module Stage3(Pc,
 		MemWrite_REG = MemWrite;
 		RegWriteSrc_REG = RegWriteSrc;
 		RegWrite_REG = RegWrite;
+		OutputPortWrite_REG = OutputPortWrite;
 	end
 	
-	ALU alu(overflow, ALUInterOut, operandA, operandB, ALUOp);
+	ALU alu(overflow, ALUInterOut, operandA, operandB, ALUOp_REG);
 	
 endmodule

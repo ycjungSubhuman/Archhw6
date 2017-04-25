@@ -34,8 +34,8 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 		if(opcode == 15 && (func == 25 || func == 26)) IsJumpReg = 1;
 		else IsJumpReg = 0;
 		if(opcode == 15) ALUOp = func;
-		else if(opcode == 4 || opcode == 7 || opcode == 8) ALUOp = 3;
-		else if(opcode == 5)  ALUOp = 2;
+		else if(opcode == 4 || opcode == 7 || opcode == 8) ALUOp = 0;
+		else if(opcode == 5)  ALUOp = 3;
 		if(opcode == 15) ALUSrc = 0;
 		else ALUSrc = 1;
 		if(opcode == 6) IsLHI = 1;
@@ -47,9 +47,10 @@ module Control(inst, BranchProperty, IsJump, IsBranch, OutputPortWrite, IsJumpRe
 		if(opcode == 7) RegWriteSrc = 1;
 		else if(opcode == 10 || (opcode == 15 && func == 26)) RegWriteSrc = 2;
 		else RegWriteSrc = 0;
-		if(opcode == 4 || opcode == 5 || opcode == 6 || opcode == 7 || opcode == 10 || (opcode == 15 && (func <= 7 || func == 26))) RegWrite = 1;
-		else RegWrite = 0;
-		if(opcode == 0) RegDest = 0;
+		if(opcode == 4 || opcode == 5 || opcode == 6 || opcode == 7 || opcode == 10 || (opcode == 15 && (func == 0 || func == 1 || func == 2 || func == 3 || func == 4 || func == 5 || func == 6 || func == 7 || func == 26))) RegWrite = 1;
+		else 
+			RegWrite = 0;
+		if(opcode == 15 && (func == 0 || func == 1 || func == 2 || func == 3 || func == 4 || func == 5 || func == 6 || func == 7)) RegDest = 0;
 		else if(opcode == 10 || (opcode == 15 && func == 26)) RegDest = 2;
 		else RegDest = 1;
 		if(opcode == 15 && func == 29) IsHLT = 1;
